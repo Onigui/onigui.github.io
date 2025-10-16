@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Guilherme Tiago — Terminal</title>
+  <meta name="description" content="Portfólio interativo em formato de terminal — Guilherme Tiago (onigui)" />
+  <style>
+    :root{
+      --bg:#0b0f14;        /* fundo escuro elegante */
+      --panel:#0f141b;
+      --text:#d6e2ee;      /* texto principal */
+      --muted:#8aa0b6;     /* texto secundário */
+      --accent:#4bd2a2;    /* verde terminal */
+      --accent2:#43b3f0;   /* azul ciano */
+      --cursor:#c2f7e5;
+      --shadow: 0 30px 60px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.03);
+      --radius:18px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background: radial-gradient(1200px 800px at 80% -20%, rgba(67,179,240,.12), transparent 60%),
+                               radial-gradient(900px 600px at -10% 120%, rgba(75,210,162,.10), transparent 60%),
+                               var(--bg);
+      color:var(--text); font-family: var(--mono);
+      display:grid; place-items:center; padding:24px;
+    }
+
+    .wrap{width:min(980px, 100%);}
+
+    .titlebar{
+      display:flex; align-items:center; gap:12px; margin:0 auto 10px; width:min(980px,100%);
+    }
+    .dot{width:12px; height:12px; border-radius:999px; box-shadow:0 0 0 2px rgba(0,0,0,.15) inset}
+    .red{background:#ff5f56}.yellow{background:#ffbd2e}.green{background:#27c93f}
+
+    .terminal{
+      width:100%; min-height:520px; background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.02)), var(--panel);
+      border-radius:var(--radius); padding:22px; box-shadow:var(--shadow);
+      position:relative; overflow:hidden; border:1px solid rgba(255,255,255,.04);
+    }
+
+    .header{color:var(--muted); font-size:14px; letter-spacing:.2px; margin:6px 0 16px}
+
+    pre{white-space:pre-wrap; word-break:break-word; margin:0; font-size:15px; line-height:1.65}
+    code{font-family:var(--mono)}
+
+    .prompt{display:flex; gap:8px; align-items:center; margin-top:10px}
+    .path{color:var(--accent2)}
+    .symbol{color:var(--accent)}
+    .cmd{min-height:1.4em}
+
+    .cursor{display:inline-block; width:9px; height:1.1em; translate:0 .15em; background:var(--cursor);
+            animation:blink 1s steps(1,end) infinite}
+    @keyframes blink{50%{opacity:0}}
+
+    .status{position:absolute; right:16px; top:12px; color:var(--muted); font-size:12px}
+
+    #hidden{position:absolute; opacity:0; pointer-events:none}
+
+    .hint{color:var(--muted); font-size:13px; margin-top:12px}
+
+    .badge{display:inline-block; padding:.2em .55em; border-radius:6px; background:rgba(67,179,240,.12); color:#bfe6ff; border:1px solid rgba(67,179,240,.25)}
+
+    a{color:var(--accent2); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    footer{margin-top:14px; color:var(--muted); font-size:12px}
+
+    @media (max-width:520px){ pre{font-size:14px} }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="titlebar" aria-hidden="true">
+      <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+      <span class="badge">onigui@dev</span>
+    </div>
+
+    <section class="terminal" role="region" aria-label="Terminal interativo">
+      <div class="status">Pressione <strong>/</strong> para focar • Digite <strong>help</strong></div>
+      <div class="header">Guilherme Tiago — <span class="badge">Software Engineer</span></div>
+      <pre id="out" aria-live="polite"></pre>
+      <div class="prompt" aria-label="Entrada de comando">
+        <span class="path">onigui@dev</span><span class="symbol">:</span><span class="path">~</span><span class="symbol">$</span>
+        <span class="cmd" id="cmd"></span><span class="cursor" id="cur"></span>
+      </div>
+      <input id="hidden" autocomplete="off" spellcheck="false" />
+      <div class="hint">Dicas: <code>help</code>, <code>whoami</code>, <code>skills</code>, <code>projects</code>, <code>contact</code>, <code>links</code>, <code>theme</code>, <code>clear</code></div>
+      <footer>Feito com HTML/CSS/JS • Hospede em GitHub Pages • © Guilherme Tiago</footer>
+    </section>
+  </div>
+
+  <script>
+    const out = document.getElementById('out');
+    const cmdEl = document.getElementById('cmd');
+    const hidden = document.getElementById('hidden');
+
+    const state = {history:[], idx:-1, theme:'dark'};
+
+    const print = (text='') => { out.innerHTML += text + (text.endsWith('\n')? '':'\n'); out.scrollTop = out.scrollHeight; };
+    const br = () => print('');
+
+    const banner = () => {
+      print('Welcome to \x1b[36mGT Terminal\x1b[0m — type \x1b[36mhelp\x1b[0m to start.');
+      print('');
+    };
+
+    const colorize = (s)=> s
+      .replaceAll('\x1b[36m','<span style="color:var(--accent2)">')
+      .replaceAll('\x1b[32m','<span style="color:var(--accent)">')
+      .replaceAll('\x1b[0m','</span>');
+
+    const commands = {
+      help(){
+        return `Comandos disponíveis:\n`+
+               `  \x1b[36mwhoami\x1b[0m      Sobre o Guilherme\n`+
+               `  \x1b[36mskills\x1b[0m      Principais competências\n`+
+               `  \x1b[36mprojects\x1b[0m    Projetos em destaque\n`+
+               `  \x1b[36mcontact\x1b[0m     Formas de contato\n`+
+               `  \x1b[36mlinks\x1b[0m       Links úteis\n`+
+               `  \x1b[36mtheme\x1b[0m       Alterna tema (dark/light)\n`+
+               `  \x1b[36mclear\x1b[0m       Limpa a tela`;
+      },
+      whoami(){
+        return `\x1b[32mGuilherme Tiago\x1b[0m — Engenheiro de Software (Full Stack).\n`+
+               `Foco em soluções escaláveis, automação e impacto real de negócio.`;
+      },
+      skills(){
+        return `Linguagens: Python, JavaScript, TypeScript, C#, C++\n`+
+               `Frameworks: Node.js, React, Flask, FastAPI\n`+
+               `Ferramentas: Docker, Git, PostgreSQL, MongoDB\n`+
+               `Áreas: Web, APIs REST, Automação, Integrações, IA`;
+      },
+      projects(){
+        return `1) Word Document Auto-Filler — Geração automática de .docx + PDF, histórico e modo em lote.\n`+
+               `2) Rifa/E-commerce — Sistema com chances e sorteio após 100% vendido.\n`+
+               `3) Automation Tools — Rotinas de integração e ETL leves.\n`+
+               `\nVeja meu GitHub: https://github.com/onigui`;
+      },
+      contact(){
+        return `GitHub: https://github.com/onigui\nLinkedIn: https://www.linkedin.com/in/guilherme-tiago\nE-mail: guiotiago@gmail.com`;
+      },
+      links(){
+        return `CV (PDF): /Em construção \nGitHub: https://github.com/onigui\nPerfil LinkedIn: https://www.linkedin.com/in/guilherme-tiago`;
+      },
+      theme(){
+        if(state.theme==='dark'){
+          document.documentElement.style.setProperty('--bg','#f3f6fa');
+          document.documentElement.style.setProperty('--panel','#ffffff');
+          document.documentElement.style.setProperty('--text','#0c1723');
+          document.documentElement.style.setProperty('--muted','#516479');
+          document.documentElement.style.setProperty('--shadow','0 30px 60px rgba(0,0,0,.12), inset 0 1px 0 rgba(255,255,255,.9)');
+          state.theme='light';
+          return 'Tema: light';
+        } else {
+          document.documentElement.style.removeProperty('--bg');
+          document.documentElement.style.removeProperty('--panel');
+          document.documentElement.style.removeProperty('--text');
+          document.documentElement.style.removeProperty('--muted');
+          document.documentElement.style.removeProperty('--shadow');
+          state.theme='dark';
+          return 'Tema: dark';
+        }
+      },
+      clear(){ out.innerHTML=''; return ''; }
+    };
+
+    function run(raw){
+      const input = raw.trim();
+      if(!input) return;
+      print(`<span class="path">onigui@dev</span><span class="symbol">:</span><span class="path">~</span><span class="symbol">$</span> ${input}`);
+      const [cmd] = input.split(/\s+/);
+      if(commands[cmd]){
+        const res = commands[cmd]();
+        if(res) print(colorize(res));
+      } else {
+        print(`Comando não encontrado: ${cmd}. Tente \x1b[36mhelp\x1b[0m.`);
+      }
+      br();
+    }
+
+    // input handling
+    const focusInput = ()=> hidden.focus();
+    window.addEventListener('keydown', (e)=>{
+      if(e.key === '/'){ e.preventDefault(); focusInput(); return; }
+      if(document.activeElement !== hidden) return; // type only when focused
+      if(e.key === 'Enter'){
+        state.history.unshift(hidden.value);
+        state.idx = -1;
+        run(hidden.value);
+        hidden.value=''; cmdEl.textContent='';
+      } else if(e.key === 'ArrowUp'){
+        state.idx = Math.min(state.idx+1, state.history.length-1);
+        hidden.value = state.history[state.idx] || ''; cmdEl.textContent = hidden.value;
+      } else if(e.key === 'ArrowDown'){
+        state.idx = Math.max(state.idx-1, -1);
+        hidden.value = state.idx===-1 ? '' : (state.history[state.idx]||'');
+        cmdEl.textContent = hidden.value;
+      } else if(e.key.length === 1 || e.key === 'Backspace' || e.key === 'Delete'){
+        setTimeout(()=>{ cmdEl.textContent = hidden.value; }, 0);
+      }
+    });
+
+    // clicking anywhere focuses input
+    document.querySelector('.terminal').addEventListener('click', focusInput);
+
+    // init
+    banner();
+    print(colorize('Digite \x1b[36mhelp\x1b[0m para ver comandos.'));
+  </script>
+</body>
+</html>
