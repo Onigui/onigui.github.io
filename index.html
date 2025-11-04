@@ -8,8 +8,6 @@
 <link rel="icon" href="/avatar.png">
 <link rel="manifest" href="/manifest.webmanifest">
 <meta name="theme-color" content="#0b0f14">
-
-<!-- Social -->
 <meta property="og:title" content="Guilherme Tiago — Full Stack Software Engineer">
 <meta property="og:description" content="React • Node.js • Python • Cloud & Automation. Portfolio, resume, and projects.">
 <meta property="og:image" content="https://onigui.github.io/avatar.png">
@@ -19,37 +17,58 @@
 <style>
   :root{
     --bg:#0b0f14; --panel:#0f141b; --ink:#e8f0f7; --muted:#9fb3c8; --line:#1b2736; --brand:#4aa0ff; --chip:#0e1520;
+    --radius:12px; --space:16px; --space-lg:20px; --w:1120px;
   }
   *{box-sizing:border-box}
-  html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 system-ui,Segoe UI,Roboto,Inter,Arial}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 system-ui,Segoe UI,Inter,Roboto,Arial}
   a{color:inherit;text-decoration:none}
-  .wrap{max-width:1100px;margin:26px auto;padding:0 16px}
-  header{display:flex;align-items:center;gap:14px;padding:8px 0 16px;border-bottom:1px solid var(--line);flex-wrap:wrap}
-  .avatar{width:44px;height:44px;border-radius:10px;background:url('/avatar.png') center/cover;border:1px solid var(--line)}
-  .title{display:flex;flex-direction:column}
-  h1{margin:0;font-size:20px}
-  .sub{color:var(--muted);font-size:13px}
-  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
-  .chip{display:inline-flex;gap:8px;align-items:center;background:var(--chip);border:1px solid var(--line);padding:6px 10px;border-radius:10px}
-  .btn{cursor:pointer}
-  .lang .active{outline:2px solid var(--brand)}
-  main{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-top:16px}
-  @media(max-width:900px){main{grid-template-columns:1fr}}
+  .wrap{max-width:var(--w);margin:0 auto;padding:24px 16px 40px}
+
+  /* HEADER */
+  header{position:sticky;top:0;z-index:10;background:linear-gradient(180deg, rgba(11,15,20,.9), rgba(11,15,20,.86));
+    backdrop-filter: blur(6px); border-bottom:1px solid var(--line);}
+  .header-inner{max-width:var(--w);margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:14px}
+  .avatar{width:44px;height:44px;border-radius:10px;background:url('/avatar.png') center/cover;border:1px solid var(--line);flex:0 0 44px}
+  .title{display:flex;flex-direction:column;min-width:0}
+  h1{margin:0;font-size:18px;line-height:1.2}
+  .sub{color:var(--muted);font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:60ch}
+  .nav{margin-left:auto;display:flex;gap:8px;align-items:center;min-width:0}
+  .chips{display:flex;gap:8px;align-items:center;overflow:auto;max-width:100%;scrollbar-width:none}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{flex:0 0 auto;display:inline-flex;gap:8px;align-items:center;background:var(--chip);
+    border:1px solid var(--line);padding:6px 10px;border-radius:10px;white-space:nowrap}
+  .lang{display:flex;gap:6px;margin-left:4px}
+  .btn{cursor:pointer;background:var(--chip);border:1px solid var(--line);padding:6px 10px;border-radius:10px;color:inherit}
+  .btn.active{outline:2px solid var(--brand)}
+
+  /* LAYOUT */
+  main{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:22px}
+  @media (max-width:980px){ main{grid-template-columns:1fr} .sub{max-width:38ch} }
+  .section{margin-top:14px}
   .h{color:var(--brand);text-transform:uppercase;letter-spacing:.06em;font-size:12px;margin:0 0 8px}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:14px}
   .muted{color:var(--muted)}
-  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  @media(max-width:900px){.row{grid-template-columns:1fr}}
-  .pill{display:inline-block;background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:4px 8px;margin:4px 6px 0 0;font-size:12px}
   ul{margin:8px 0 0 18px;padding:0} li{margin:6px 0}
-  footer{margin:22px 0 40px;color:var(--muted);text-align:center;font-size:12px}
-  .proj h3{margin:0 0 4px 0}
-  .proj .muted{font-size:12px}
+
+  /* SKILLS pills */
+  .pill{display:inline-block;background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:4px 8px;margin:4px 6px 0 0;font-size:12px}
+
+  /* Projects grid with equal look */
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media (max-width:900px){.row{grid-template-columns:1fr}}
+  .proj{display:flex;flex-direction:column}
+  .proj h3{margin:0 0 6px 0}
+  .proj .stack{font-size:12px}
+  .proj .body{margin-top:6px}
+  .proj .foot{margin-top:auto}
+
+  footer{margin:28px 0 0;color:var(--muted);text-align:center;font-size:12px}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
+
+<header>
+  <div class="header-inner">
     <div class="avatar" aria-hidden="true"></div>
     <div class="title">
       <h1>Guilherme Tiago</h1>
@@ -59,19 +78,23 @@
       </div>
     </div>
 
-    <nav class="chips">
-      <a class="chip" href="/resume/">📄 <span data-en="Resume" data-pt="Currículo">Resume</span></a>
-      <a class="chip" href="/terminal/">💻 <span data-en="Interactive Terminal" data-pt="Terminal Interativo">Interactive Terminal</span></a>
-      <a class="chip" href="https://github.com/onigui" target="_blank" rel="noopener">🌐 GitHub</a>
-      <a class="chip" href="https://www.linkedin.com/in/guilherme-tiago" target="_blank" rel="noopener">🔗 LinkedIn</a>
-      <a class="chip" href="mailto:guiotiago@gmail.com">✉️ <span>Contact</span></a>
-      <div class="chip lang">
+    <nav class="nav">
+      <div class="chips">
+        <a class="chip" href="/resume/">📄 <span data-en="Resume" data-pt="Currículo">Resume</span></a>
+        <a class="chip" href="/terminal/">💻 <span data-en="Interactive Terminal" data-pt="Terminal Interativo">Interactive Terminal</span></a>
+        <a class="chip" href="https://github.com/onigui" target="_blank" rel="noopener">🌐 GitHub</a>
+        <a class="chip" href="https://www.linkedin.com/in/guilherme-tiago" target="_blank" rel="noopener">🔗 LinkedIn</a>
+        <a class="chip" href="mailto:guiotiago@gmail.com">✉️ <span data-en="Contact" data-pt="Contato">Contact</span></a>
+      </div>
+      <div class="lang">
         <button id="en" class="btn active">EN</button>
         <button id="pt" class="btn">PT</button>
       </div>
     </nav>
-  </header>
+  </div>
+</header>
 
+<div class="wrap">
   <main>
     <!-- LEFT -->
     <section>
@@ -96,51 +119,55 @@
         </div>
       </div>
 
-      <!-- CORE SKILLS -->
-      <div class="h" style="margin-top:14px" data-en="Core Skills" data-pt="Habilidades">Core Skills</div>
-      <div class="card">
-        <div class="muted" data-en="Languages" data-pt="Linguagens">Languages</div>
-        <div>
-          <span class="pill">Python</span><span class="pill">JavaScript</span><span class="pill">TypeScript</span>
-          <span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">SQL</span>
-        </div>
+      <!-- SKILLS -->
+      <div class="section">
+        <div class="h" data-en="Core Skills" data-pt="Habilidades">Core Skills</div>
+        <div class="card">
+          <div class="muted" data-en="Languages" data-pt="Linguagens">Languages</div>
+          <div>
+            <span class="pill">Python</span><span class="pill">JavaScript</span><span class="pill">TypeScript</span>
+            <span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">SQL</span>
+          </div>
 
-        <div class="muted" style="margin-top:10px">Frontend</div>
-        <div>
-          <span class="pill">React</span><span class="pill">Next.js</span><span class="pill">TailwindCSS</span><span class="pill">Bootstrap</span>
-          <span class="pill">React Native</span><span class="pill">Expo</span>
-        </div>
+          <div class="muted" style="margin-top:10px">Frontend</div>
+          <div>
+            <span class="pill">React</span><span class="pill">Next.js</span><span class="pill">TailwindCSS</span><span class="pill">Bootstrap</span>
+            <span class="pill">React Native</span><span class="pill">Expo</span>
+          </div>
 
-        <div class="muted" style="margin-top:10px">Backend</div>
-        <div>
-          <span class="pill">Node.js</span><span class="pill">Express.js</span><span class="pill">FastAPI</span><span class="pill">Flask</span><span class="pill">Django</span>
-        </div>
+          <div class="muted" style="margin-top:10px">Backend</div>
+          <div>
+            <span class="pill">Node.js</span><span class="pill">Express.js</span><span class="pill">FastAPI</span><span class="pill">Flask</span><span class="pill">Django</span>
+          </div>
 
-        <div class="muted" style="margin-top:10px" data-en="Databases" data-pt="Bancos de Dados">Databases</div>
-        <div>
-          <span class="pill">PostgreSQL</span><span class="pill">MongoDB</span><span class="pill">SQLite</span><span class="pill">Redis</span><span class="pill">Prisma</span>
-        </div>
+          <div class="muted" style="margin-top:10px" data-en="Databases" data-pt="Bancos de Dados">Databases</div>
+          <div>
+            <span class="pill">PostgreSQL</span><span class="pill">MongoDB</span><span class="pill">SQLite</span><span class="pill">Redis</span><span class="pill">Prisma</span>
+          </div>
 
-        <div class="muted" style="margin-top:10px">Automation / AI</div>
-        <div>
-          <span class="pill">APIs</span><span class="pill">ETL</span><span class="pill">PDF/Word</span><span class="pill">LLM Integration</span><span class="pill">Scripting</span>
-        </div>
+          <div class="muted" style="margin-top:10px">Automation / AI</div>
+          <div>
+            <span class="pill">APIs</span><span class="pill">ETL</span><span class="pill">PDF/Word</span><span class="pill">LLM Integration</span><span class="pill">Scripting</span>
+          </div>
 
-        <div class="muted" style="margin-top:10px">DevOps & Tools</div>
-        <div>
-          <span class="pill">Git</span><span class="pill">Docker</span><span class="pill">AWS</span><span class="pill">Render</span><span class="pill">Vercel</span>
-          <span class="pill">GitHub Actions</span><span class="pill">Vite</span><span class="pill">Webpack</span><span class="pill">CI/CD</span>
-        </div>
+          <div class="muted" style="margin-top:10px">DevOps & Tools</div>
+          <div>
+            <span class="pill">Git</span><span class="pill">Docker</span><span class="pill">AWS</span><span class="pill">Render</span><span class="pill">Vercel</span>
+            <span class="pill">GitHub Actions</span><span class="pill">Vite</span><span class="pill">Webpack</span><span class="pill">CI/CD</span>
+          </div>
 
-        <div class="muted" style="margin-top:10px">Testing</div>
-        <div>
-          <span class="pill">Jest</span><span class="pill">React Testing Library</span><span class="pill">Cypress</span><span class="pill">Playwright</span><span class="pill">Detox</span>
+          <div class="muted" style="margin-top:10px">Testing</div>
+          <div>
+            <span class="pill">Jest</span><span class="pill">React Testing Library</span><span class="pill">Cypress</span><span class="pill">Playwright</span><span class="pill">Detox</span>
+          </div>
         </div>
       </div>
 
       <!-- PROJECTS -->
-      <div class="h" style="margin-top:14px" data-en="Projects" data-pt="Projetos">Projects</div>
-      <div id="projects-row" class="row"></div>
+      <div class="section">
+        <div class="h" data-en="Projects" data-pt="Projetos">Projects</div>
+        <div id="projects-row" class="row"></div>
+      </div>
     </section>
 
     <!-- RIGHT -->
@@ -178,9 +205,11 @@
   const ptBtn = document.getElementById('pt');
 
   function setLang(lang){
+    // swap every text node with data-en / data-pt
     document.querySelectorAll('[data-en]').forEach(el=>{
       el.textContent = el.getAttribute(lang==='en' ? 'data-en' : 'data-pt');
     });
+    // show/hide language blocks
     document.querySelectorAll('[data-lang]').forEach(el=>{
       el.style.display = (el.getAttribute('data-lang')===lang) ? 'block' : 'none';
     });
@@ -188,19 +217,19 @@
     ptBtn.classList.toggle('active', lang==='pt');
     document.documentElement.lang = lang;
     localStorage.setItem('site.lang', lang);
+    // reload projects in the chosen language
     renderProjects(lang);
   }
 
   enBtn.addEventListener('click', ()=>setLang('en'));
   ptBtn.addEventListener('click', ()=>setLang('pt'));
 
-  // projects loader
+  // projects loader (equal heights feel via flex in .proj)
   const projectsRow = document.getElementById('projects-row');
   async function renderProjects(lang){
     const file = lang==='pt' ? './projects.pt.json' : './projects.json';
     try{
       const res = await fetch(file, { cache:'no-store' });
-      if(!res.ok) throw new Error('fetch failed');
       const data = await res.json();
       projectsRow.innerHTML = '';
       (data.projects||[]).forEach(p=>{
@@ -208,9 +237,9 @@
         div.className = 'card proj';
         div.innerHTML = `
           <h3>${p.title}</h3>
-          <div class="muted" style="margin-bottom:6px">${p.stack||''}</div>
-          ${(p.bullets||[]).length ? `<ul>${p.bullets.map(b=>`<li>${b}</li>`).join('')}</ul>` : ''}
-          ${p.repo ? `<p style="margin-top:8px"><a href="${p.repo}" target="_blank" rel="noopener">Repository →</a></p>` : ''}`;
+          <div class="muted stack">${p.stack||''}</div>
+          ${p.bullets?.length ? `<div class="body"><ul>${p.bullets.map(b=>`<li>${b}</li>`).join('')}</ul></div>` : ''}
+          <div class="foot">${p.repo ? `<p style="margin:10px 0 0"><a href="${p.repo}" target="_blank" rel="noopener">Repository →</a></p>` : ''}</div>`;
         projectsRow.appendChild(div);
       });
     }catch(e){
