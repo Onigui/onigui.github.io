@@ -1,25 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Guilherme Tiago — Resume</title>
-<link rel="icon" href="../avatar.png">
-<meta name="description" content="Guilherme Tiago — Full Stack Software Engineer">
+<meta name="description" content="Full Stack Software Engineer — React, Node.js, Python, Cloud, Automation & AI">
+
+<!-- Favicon + Social -->
+<link rel="icon" type="image/png" href="../avatar.png">
+<meta property="og:title" content="Guilherme Tiago — Full Stack Software Engineer">
+<meta property="og:description" content="Full-stack portfolio and resume. React • Node.js • Python • Cloud • Automation">
+<meta property="og:image" content="https://onigui.github.io/avatar.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Guilherme Tiago — Full Stack Software Engineer">
+<meta name="twitter:description" content="Full-stack portfolio and resume.">
+<meta name="twitter:image" content="https://onigui.github.io/avatar.png">
+
 <style>
-  :root{--bg:#ffffff;--ink:#0b1220;--muted:#52617a;--line:#e6ecf2;--brand:#0b4a8f;--chip:#f4f7fb}
-  @media (prefers-color-scheme:dark){:root{--bg:#0b0f14;--ink:#e8f0f7;--muted:#aab8cc;--line:#1b2736;--brand:#4aa0ff;--chip:#0f141b}}
-  *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,Segoe UI,Roboto,Arial}
-  .wrap{max-width:980px;margin:32px auto;padding:0 20px}
-  header{display:flex;gap:14px;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:16px}
-  .id{display:flex;gap:12px;align-items:center}
-  .avatar{width:64px;height:64px;border-radius:14px;background:url('../avatar.png') center/cover;border:1px solid var(--line)}
-  h1{margin:0;font-size:28px}.tag{color:var(--muted);font-size:15px}
-  .chip{display:inline-flex;gap:8px;background:var(--chip);border:1px solid var(--line);padding:6px 10px;border-radius:10px;margin:4px 6px 0 0;color:inherit;text-decoration:none}
-  .h{color:var(--brand);text-transform:uppercase;letter-spacing:.06em;font-size:14px;margin:20px 0 8px}
-  .card{border:1px solid var(--line);border-radius:12px;padding:14px}
-  .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:20px} @media(max-width:860px){.grid{grid-template-columns:1fr}}
+  :root{
+    --bg:#ffffff; --ink:#0b1220; --muted:#52617a; --line:#e6ecf2; --brand:#0b4a8f; --chip:#f4f7fb;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{ --bg:#0b0f14; --ink:#e8f0f7; --muted:#aab8cc; --line:#1b2736; --chip:#0f141b; --brand:#4aa0ff; }
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Arial}
+  a{color:inherit}
+  .wrap{max-width:1000px;margin:32px auto;padding:0 20px}
+  header{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:16px}
+  .id{display:flex;gap:14px;align-items:center}
+  .avatar{width:64px;height:64px;border-radius:14px;border:1px solid var(--line);background:url('../avatar.png') center/cover no-repeat}
+  h1{margin:0;font-size:28px;line-height:1.2}
+  .tag{margin-top:2px;color:var(--muted)}
+  .chips{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{display:inline-flex;align-items:center;gap:8px;background:var(--chip);border:1px solid var(--line);padding:6px 10px;border-radius:10px;text-decoration:none}
+  .lang{display:flex;gap:8px}
+  .lang button{border:1px solid var(--line);background:var(--chip);color:inherit;padding:6px 10px;border-radius:10px;cursor:pointer}
+  .lang .active{outline:2px solid var(--brand)}
+  main{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;margin-top:22px}
+  @media(max-width:880px){ main{grid-template-columns:1fr} }
+  .h{color:var(--brand);text-transform:uppercase;letter-spacing:.06em;font-size:14px;margin:0 0 8px}
+  .card{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--bg)}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
   .pill{display:inline-block;background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:4px 8px;margin:4px 6px 0 0;font-size:13px}
-  footer{margin:22px 0 40px;color:var(--muted);text-align:center;font-size:13px}
+  ul{margin:8px 0 0 20px;padding:0} li{margin:6px 0}
+  .role{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .muted{color:var(--muted)}
+  footer{margin:24px 0 40px;color:var(--muted);text-align:center;font-size:13px}
+  .two-col{columns:2;column-gap:14px} @media(max-width:600px){.two-col{columns:1}}
 </style>
 </head>
 <body>
@@ -28,63 +57,238 @@
     <div class="id">
       <div class="avatar" aria-hidden="true"></div>
       <div>
-        <h1>Guilherme Tiago</h1>
-        <div class="tag">Full Stack Software Engineer — React • Node.js • Python • Cloud & Automation</div>
+        <h1 data-en="Guilherme Tiago" data-pt="Guilherme Tiago">Guilherme Tiago</h1>
+        <div class="tag" data-en="Full Stack Software Engineer — React • Node.js • Python • Cloud & Automation"
+             data-pt="Engenheiro de Software Full Stack — React • Node.js • Python • Cloud & Automação">
+          Full Stack Software Engineer — React • Node.js • Python • Cloud & Automation
+        </div>
       </div>
     </div>
-    <div>
+    <div class="chips">
       <a class="chip" href="mailto:guiotiago@gmail.com">📧 guiotiago@gmail.com</a>
-      <a class="chip" href="https://github.com/onigui" target="_blank">💻 GitHub</a>
-      <a class="chip" href="https://www.linkedin.com/in/guilherme-tiago" target="_blank">💼 LinkedIn</a>
-      <a class="chip" href="/">🏠 Home</a>
+      <a class="chip" href="https://github.com/onigui" target="_blank" rel="noopener">💻 github.com/onigui</a>
+      <a class="chip" href="https://www.linkedin.com/in/guilherme-tiago" target="_blank" rel="noopener">💼 LinkedIn</a>
+      <a class="chip" href="../">🏠 Home</a>
+      <div class="lang">
+        <button id="btn-en" class="active">EN</button>
+        <button id="btn-pt">PT</button>
+      </div>
     </div>
   </header>
 
-  <main class="grid">
+  <main>
+    <!-- Left column -->
     <section>
-      <div class="h">Professional Summary</div>
-      <div class="card">
-        Full Stack Software Engineer focused on building reliable, maintainable and scalable software.
-        Strong experience across React/Next.js, Node.js/Express, Python/FastAPI, automation (PDF/Excel),
-        databases (PostgreSQL/Mongo/Prisma) and CI/CD.
+      <div class="h" data-en="Professional Summary" data-pt="Resumo Profissional">Professional Summary</div>
+      <div class="card" data-lang="en">
+        Full Stack Software Engineer passionate about building reliable, scalable, and maintainable systems. I work across the stack — React/Next.js, Node.js/Express, Python/FastAPI — with strong foundations in clean architecture, automation (PDF/Excel, backups, ETL), testing, and cloud (Docker, AWS, Render, Vercel). I value performance, DX, and measurable impact. Currently finishing a B.Sc. in Software Engineering and leading projects that combine UI/UX, automation, and integrations.
+      </div>
+      <div class="card" data-lang="pt" style="display:none">
+        Engenheiro de Software Full Stack apaixonado por construir sistemas confiáveis, escaláveis e fáceis de manter. Atuo em todo o stack — React/Next.js, Node.js/Express, Python/FastAPI — com base sólida em arquitetura limpa, automação (PDF/Excel, backups, ETL), testes e cloud (Docker, AWS, Render, Vercel). Valorizo performance, DX e impacto mensurável. Atualmente finalizando Bacharelado em Engenharia de Software e liderando projetos que combinam UI/UX, automação e integrações.
       </div>
 
-      <div class="h">Experience</div>
+      <div class="h" data-en="Professional Experience" data-pt="Experiência Profissional">Professional Experience</div>
       <div class="card">
-        <strong>Independent Software Engineer</strong> — 2022–Present · Remote
+        <div class="role">
+          <strong data-en="Independent Software Engineer (Freelance Projects)"
+                  data-pt="Engenheiro de Software Independente (Projetos Freelance)">Independent Software Engineer (Freelance Projects)</strong>
+          <span class="muted">2022 – Present · Remote</span>
+        </div>
         <ul>
-          <li>Built automation platforms and full-stack apps (auth, APIs, dashboards, backups, PDF/Excel generation).</li>
-          <li>Delivered admin panels with React + TypeScript and REST backends (Node/FastAPI).</li>
+          <li data-en="Designed and built full-stack systems, automation tools and APIs for internal workflows and small businesses."
+              data-pt="Concepção e construção de sistemas full-stack, automações e APIs para uso interno e pequenas empresas.">
+            Designed and built full-stack systems, automation tools and APIs for internal workflows and small businesses.
+          </li>
+          <li data-en="Document automation platform (Python + Flask/FastAPI + PDF/Excel) reducing manual work by ~80%."
+              data-pt="Plataforma de automação de documentos (Python + Flask/FastAPI + PDF/Excel) com ~80% de redução de trabalho manual.">
+            Document automation platform (Python + Flask/FastAPI + PDF/Excel) reducing manual work by ~80%.
+          </li>
+          <li data-en="Raffle-style e-commerce with automated draws and secure flows; admin panel in React + TypeScript."
+              data-pt="E-commerce de rifas com sorteio automatizado e fluxos seguros; painel admin em React + TypeScript.">
+            Raffle-style e-commerce with automated draws and secure flows; admin panel in React + TypeScript.
+          </li>
+          <li data-en="Ops scripts for backups, deploy checks, and monitoring; CI-ready projects (lint/build/test)."
+              data-pt="Scripts operacionais para backups, checagens de deploy e monitoramento; projetos prontos para CI (lint/build/test).">
+            Ops scripts for backups, deploy checks, and monitoring; CI-ready projects (lint/build/test).
+          </li>
         </ul>
       </div>
 
-      <div class="h">Projects</div>
       <div class="card">
-        <p><strong>Liga do Bem — Full Platform (Monorepo)</strong> · Web (Next.js/TS) • Mobile (React Native/Expo) • API (Node/Express + Prisma/PostgreSQL)</p>
-        <p><a href="https://github.com/onigui/nova-versao-liga-do-bem" target="_blank">Repository →</a></p>
-        <hr>
-        <p><strong>FAMESP — Credentialing System</strong> · FastAPI backend • automation (backups, PDF/Excel), documented API</p>
-        <p><a href="https://github.com/onigui/famesp" target="_blank">Repository →</a></p>
+        <div class="role">
+          <strong data-en="Software Developer — Personal & Academic Projects"
+                  data-pt="Desenvolvedor de Software — Projetos Pessoais e Acadêmicos">Software Developer — Personal & Academic Projects</strong>
+          <span class="muted">2021 – 2022</span>
+        </div>
+        <ul>
+          <li data-en="Automation scripts, REST APIs and integration tools in Python and Node.js."
+              data-pt="Scripts de automação, APIs REST e ferramentas de integração em Python e Node.js.">
+            Automation scripts, REST APIs and integration tools in Python and Node.js.
+          </li>
+          <li data-en="Open-source prototypes for data processing and UI optimization."
+              data-pt="Protótipos open-source para processamento de dados e otimização de UI.">
+            Open-source prototypes for data processing and UI optimization.
+          </li>
+        </ul>
+      </div>
+
+      <div class="h" data-en="Projects & Portfolio" data-pt="Projetos & Portfólio">Projects & Portfolio</div>
+      <div class="card">
+        <ul>
+          <li>
+            <strong data-en="Liga do Bem — Full Platform (Monorepo)"
+                    data-pt="Liga do Bem — Plataforma Completa (Monorepo)">Liga do Bem — Full Platform (Monorepo)</strong>
+            <div class="muted" data-en="Mobile (React Native/Expo) • Web (Next.js/TS) • API (Node/Express + Prisma/PostgreSQL) • Push (Firebase FCM) • Deploy (Render)"
+                 data-pt="Mobile (React Native/Expo) • Web (Next.js/TS) • API (Node/Express + Prisma/PostgreSQL) • Push (Firebase FCM) • Deploy (Render)">
+              Mobile (React Native/Expo) • Web (Next.js/TS) • API (Node/Express + Prisma/PostgreSQL) • Push (Firebase FCM) • Deploy (Render)
+            </div>
+            <div><a href="https://github.com/onigui/nova-versao-liga-do-bem" target="_blank" rel="noopener">github.com/onigui/nova-versao-liga-do-bem</a></div>
+            <ul>
+              <li data-en="Multi-app architecture: public site + admin portal + upcoming B2B partner app."
+                  data-pt="Arquitetura multi-app: site público + portal admin + futuro app B2B para parceiros.">
+                Multi-app architecture: public site + admin portal + upcoming B2B partner app.
+              </li>
+              <li data-en="Auth (JWT/OAuth), CRUD, uploads, notifications, analytics; payments-ready endpoints."
+                  data-pt="Auth (JWT/OAuth), CRUD, uploads, notificações, analytics; endpoints prontos para pagamentos.">
+                Auth (JWT/OAuth), CRUD, uploads, notifications, analytics; payments-ready endpoints.
+              </li>
+              <li data-en="Local DX: dockerized DB, Prisma migrations/seed; CI-ready (lint/build/test) and E2E (Playwright/Detox)."
+                  data-pt="DX local: DB dockerizado, migrações/seed Prisma; pronto para CI (lint/build/test) e E2E (Playwright/Detox).">
+                Local DX: dockerized DB, Prisma migrations/seed; CI-ready (lint/build/test) and E2E (Playwright/Detox).
+              </li>
+            </ul>
+          </li>
+
+          <li style="margin-top:10px;">
+            <strong data-en="FAMESP — Credentialing System (Automation-heavy)"
+                    data-pt="FAMESP — Sistema de Credenciamento (Automação)">
+              FAMESP — Credentialing System (Automation-heavy)
+            </strong>
+            <div class="muted" data-en="FastAPI backend • Dedicated front-end • Automation: backups, PDF/Excel generation, deploy checks (Render)"
+                 data-pt="Back-end FastAPI • Front-end dedicado • Automação: backups, geração de PDF/Excel, checagens de deploy (Render)">
+              FastAPI backend • Dedicated front-end • Automation: backups, PDF/Excel generation, deploy checks (Render)
+            </div>
+            <div><a href="https://github.com/onigui/famesp" target="_blank" rel="noopener">github.com/onigui/famesp</a></div>
+            <ul>
+              <li data-en="JWT/refresh auth, documented API (Swagger/ReDoc), reliability ops scripts."
+                  data-pt="Auth com JWT/refresh, API documentada (Swagger/ReDoc), scripts operacionais de confiabilidade.">
+                JWT/refresh auth, documented API (Swagger/ReDoc), reliability ops scripts.
+              </li>
+              <li data-en="PDF/Excel generation and DB backup workflows that reduce manual effort and errors."
+                  data-pt="Rotinas de geração de PDF/Excel e backup de banco que reduzem esforço manual e erros.">
+                PDF/Excel generation and DB backup workflows that reduce manual effort and errors.
+              </li>
+              <li data-en="Suggested CI: Pytest + Playwright smoke; artifacts with sample PDFs for review."
+                  data-pt="CI sugerido: Pytest + Playwright smoke; artefatos com PDFs de exemplo para revisão.">
+                Suggested CI: Pytest + Playwright smoke; artifacts with sample PDFs for review.
+              </li>
+            </ul>
+          </li>
+
+          <li style="margin-top:10px;">
+            <a href="https://onigui.github.io/terminal/" target="_blank" rel="noopener">Interactive Portfolio (Terminal)</a>
+            &nbsp;•&nbsp;
+            <a href="https://github.com/onigui" target="_blank" rel="noopener">GitHub — Selected Work</a>
+          </li>
+        </ul>
       </div>
     </section>
 
+    <!-- Right column -->
     <aside>
-      <div class="h">Core Skills</div>
+      <div class="h" data-en="Technical Skills" data-pt="Habilidades Técnicas">Technical Skills</div>
       <div class="card">
-        <span class="pill">React</span><span class="pill">Next.js</span><span class="pill">TypeScript</span>
-        <span class="pill">Node.js</span><span class="pill">Express</span><span class="pill">Python</span>
-        <span class="pill">FastAPI</span><span class="pill">PostgreSQL</span><span class="pill">Prisma</span>
-        <span class="pill">Docker</span><span class="pill">CI/CD</span><span class="pill">Playwright/Cypress</span>
+        <div class="grid">
+          <div>
+            <div class="muted" data-en="Languages" data-pt="Linguagens">Languages</div>
+            <div class="two-col">
+              <span class="pill">Python</span><span class="pill">JavaScript</span><span class="pill">TypeScript</span>
+              <span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">SQL</span>
+            </div>
+          </div>
+          <div>
+            <div class="muted">Frontend</div>
+            <div class="two-col">
+              <span class="pill">React</span><span class="pill">Next.js</span><span class="pill">TailwindCSS</span><span class="pill">Bootstrap</span>
+              <span class="pill">React Native</span><span class="pill">Expo</span>
+            </div>
+          </div>
+          <div>
+            <div class="muted">Backend</div>
+            <div class="two-col">
+              <span class="pill">Node.js</span><span class="pill">Express.js</span><span class="pill">FastAPI</span><span class="pill">Flask</span><span class="pill">Django</span>
+            </div>
+          </div>
+          <div>
+            <div class="muted" data-en="Databases" data-pt="Bancos de Dados">Databases</div>
+            <div class="two-col">
+              <span class="pill">PostgreSQL</span><span class="pill">MongoDB</span><span class="pill">SQLite</span><span class="pill">Redis</span><span class="pill">Prisma</span>
+            </div>
+          </div>
+          <div>
+            <div class="muted">Automation / AI</div>
+            <div class="two-col">
+              <span class="pill">APIs</span><span class="pill">ETL</span><span class="pill">PDF/Word</span><span class="pill">LLM Integration</span><span class="pill">Scripting</span>
+            </div>
+          </div>
+          <div>
+            <div class="muted">DevOps & Tools</div>
+            <div class="two-col">
+              <span class="pill">Git</span><span class="pill">Docker</span><span class="pill">AWS</span><span class="pill">Render</span><span class="pill">Vercel</span>
+              <span class="pill">GitHub Actions</span><span class="pill">Vite</span><span class="pill">Webpack</span><span class="pill">CI/CD</span>
+            </div>
+          </div>
+          <div>
+            <div class="muted">Testing</div>
+            <div class="two-col">
+              <span class="pill">Jest</span><span class="pill">React Testing Library</span><span class="pill">Cypress</span><span class="pill">Playwright</span><span class="pill">Detox</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="h">Education</div>
+      <div class="h" data-en="Education" data-pt="Formação">Education</div>
       <div class="card">
-        B.Sc. Software Engineering (in progress) — Centro Universitário Anhanguera Pitágoras Ampli
+        <strong>B.Sc. in Software Engineering</strong> <span class="muted" data-en="(In Progress)" data-pt="(Em andamento)">(In Progress)</span><br>
+        Centro Universitário Anhanguera Pitágoras Ampli<br>
+        <span class="muted" data-en="Expected Graduation: 2026" data-pt="Conclusão prevista: 2026">Expected Graduation: 2026</span>
+      </div>
+
+      <div class="h" data-en="Languages" data-pt="Idiomas">Languages</div>
+      <div class="card">
+        <span class="pill">Portuguese — Native</span> <span class="pill">English — Professional</span>
       </div>
     </aside>
   </main>
 
-  <footer>Print as PDF: Ctrl/Cmd + P</footer>
+  <footer>
+    <span class="muted" data-en="Print as PDF: Ctrl/Cmd + P (fits on one page)"
+          data-pt="Imprima em PDF: Ctrl/Cmd + P (cabe em uma página)">Print as PDF: Ctrl/Cmd + P (fits on one page)</span>
+  </footer>
 </div>
+
+<script>
+  (function(){
+    const btnEN = document.getElementById('btn-en');
+    const btnPT = document.getElementById('btn-pt');
+
+    function setLang(lang){
+      document.querySelectorAll('[data-en]').forEach(el=>{
+        el.textContent = el.getAttribute(lang==='en' ? 'data-en' : 'data-pt');
+      });
+      document.querySelectorAll('[data-lang]').forEach(el=>{
+        el.style.display = (el.getAttribute('data-lang')===lang) ? 'block' : 'none';
+      });
+      btnEN.classList.toggle('active', lang==='en');
+      btnPT.classList.toggle('active', lang==='pt');
+      document.documentElement.lang = lang;
+      localStorage.setItem('resume.lang', lang);
+    }
+
+    btnEN.addEventListener('click', ()=>setLang('en'));
+    btnPT.addEventListener('click', ()=>setLang('pt'));
+    setLang(localStorage.getItem('resume.lang')==='pt' ? 'pt' : 'en');
+  })();
+</script>
 </body>
 </html>
