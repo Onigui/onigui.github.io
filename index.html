@@ -1,215 +1,183 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Guilherme Tiago — Terminal</title>
-  <meta name="description" content="Portfólio interativo em formato de terminal — Guilherme Tiago (onigui)" />
-  <style>
-    :root{
-      --bg:#0b0f14;        /* fundo escuro elegante */
-      --panel:#0f141b;
-      --text:#d6e2ee;      /* texto principal */
-      --muted:#8aa0b6;     /* texto secundário */
-      --accent:#4bd2a2;    /* verde terminal */
-      --accent2:#43b3f0;   /* azul ciano */
-      --cursor:#c2f7e5;
-      --shadow: 0 30px 60px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.03);
-      --radius:18px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; background: radial-gradient(1200px 800px at 80% -20%, rgba(67,179,240,.12), transparent 60%),
-                               radial-gradient(900px 600px at -10% 120%, rgba(75,210,162,.10), transparent 60%),
-                               var(--bg);
-      color:var(--text); font-family: var(--mono);
-      display:grid; place-items:center; padding:24px;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Guilherme Tiago — Full Stack Software Engineer</title>
+<meta name="description" content="Full Stack Software Engineer — React, Node.js, Python, automation & cloud.">
 
-    .wrap{width:min(980px, 100%);}
+<!-- Favicon + Social -->
+<link rel="icon" type="image/png" href="./avatar.png">
+<meta property="og:title" content="Guilherme Tiago — Full Stack Software Engineer">
+<meta property="og:description" content="Portfolio, projects and resume. React • Node.js • Python • Cloud • Automation">
+<meta property="og:image" content="https://onigui.github.io/avatar.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Guilherme Tiago — Full Stack Software Engineer">
+<meta name="twitter:description" content="Portfolio, projects and resume.">
+<meta name="twitter:image" content="https://onigui.github.io/avatar.png">
 
-    .titlebar{
-      display:flex; align-items:center; gap:12px; margin:0 auto 10px; width:min(980px,100%);
-    }
-    .dot{width:12px; height:12px; border-radius:999px; box-shadow:0 0 0 2px rgba(0,0,0,.15) inset}
-    .red{background:#ff5f56}.yellow{background:#ffbd2e}.green{background:#27c93f}
-
-    .terminal{
-      width:100%; min-height:520px; background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.02)), var(--panel);
-      border-radius:var(--radius); padding:22px; box-shadow:var(--shadow);
-      position:relative; overflow:hidden; border:1px solid rgba(255,255,255,.04);
-    }
-
-    .header{color:var(--muted); font-size:14px; letter-spacing:.2px; margin:6px 0 16px}
-
-    pre{white-space:pre-wrap; word-break:break-word; margin:0; font-size:15px; line-height:1.65}
-    code{font-family:var(--mono)}
-
-    .prompt{display:flex; gap:8px; align-items:center; margin-top:10px}
-    .path{color:var(--accent2)}
-    .symbol{color:var(--accent)}
-    .cmd{min-height:1.4em}
-
-    .cursor{display:inline-block; width:9px; height:1.1em; translate:0 .15em; background:var(--cursor);
-            animation:blink 1s steps(1,end) infinite}
-    @keyframes blink{50%{opacity:0}}
-
-    .status{position:absolute; right:16px; top:12px; color:var(--muted); font-size:12px}
-
-    #hidden{position:absolute; opacity:0; pointer-events:none}
-
-    .hint{color:var(--muted); font-size:13px; margin-top:12px}
-
-    .badge{display:inline-block; padding:.2em .55em; border-radius:6px; background:rgba(67,179,240,.12); color:#bfe6ff; border:1px solid rgba(67,179,240,.25)}
-
-    a{color:var(--accent2); text-decoration:none}
-    a:hover{text-decoration:underline}
-
-    footer{margin-top:14px; color:var(--muted); font-size:12px}
-
-    @media (max-width:520px){ pre{font-size:14px} }
-  </style>
+<style>
+:root{
+  --bg:#0b0f14; --ink:#e8f0f7; --muted:#aab8cc; --line:#1b2736; --brand:#4aa0ff; --chip:#111826;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);
+  font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica Neue,Arial}
+a{color:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:28px 20px}
+header{display:flex;align-items:center;gap:16px;justify-content:space-between;flex-wrap:wrap}
+.id{display:flex;align-items:center;gap:14px}
+.avatar{width:64px;height:64px;border-radius:14px;border:1px solid var(--line);
+  background:url('./avatar.png') center/cover no-repeat}
+h1{margin:0;font-size:26px}
+.tag{color:var(--muted);margin-top:2px}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--chip);padding:8px 12px;border:1px solid var(--line);
+  border-radius:10px;text-decoration:none}
+.lang{display:flex;gap:8px}
+.lang button{border:1px solid var(--line);background:var(--chip);color:var(--ink);padding:6px 10px;border-radius:10px;cursor:pointer}
+.lang .active{outline:2px solid var(--brand)}
+.hero{margin:26px 0 10px;border-top:1px solid var(--line);padding-top:22px}
+.grid{display:grid;grid-template-columns:1.3fr .7fr;gap:26px}
+.card{border:1px solid var(--line);border-radius:14px;padding:16px;background:linear-gradient(180deg,#0c121a,transparent)}
+.h{font-size:13px;letter-spacing:.08em;color:var(--brand);text-transform:uppercase;margin:0 0 10px}
+ul{margin:10px 0 0 20px;padding:0}
+li{margin:6px 0}
+.pill{display:inline-block;background:var(--chip);border:1px solid var(--line);padding:4px 8px;border-radius:999px;margin:4px 6px 0 0;font-size:13px}
+.projects .row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.proj{border:1px solid var(--line);border-radius:12px;padding:14px;background:linear-gradient(180deg,#0e1520,transparent)}
+.proj h3{margin:4px 0 8px;font-size:18px}
+.proj .muted{color:var(--muted);font-size:14px}
+.proj a{color:var(--brand);text-decoration:none}
+.proj a:hover{text-decoration:underline}
+footer{margin:22px 0 40px;color:var(--muted);text-align:center;font-size:13px}
+@media (max-width:900px){ .grid{grid-template-columns:1fr} .projects .row{grid-template-columns:1fr} }
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="titlebar" aria-hidden="true">
-      <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-      <span class="badge">onigui@dev</span>
+<div class="wrap">
+
+  <header>
+    <div class="id">
+      <div class="avatar" aria-hidden="true"></div>
+      <div>
+        <h1 data-en="Guilherme Tiago" data-pt="Guilherme Tiago">Guilherme Tiago</h1>
+        <div class="tag" data-en="Full Stack Software Engineer — React • Node.js • Python • Cloud & Automation"
+             data-pt="Engenheiro de Software Full Stack — React • Node.js • Python • Cloud & Automação">
+          Full Stack Software Engineer — React • Node.js • Python • Cloud & Automation
+        </div>
+      </div>
+    </div>
+    <div class="btns">
+      <a class="btn" href="https://onigui.github.io/resume/" target="_blank" rel="noopener">📄 Resume</a>
+      <a class="btn" href="https://onigui.github.io/terminal/" target="_blank" rel="noopener">💻 Interactive Terminal</a>
+      <a class="btn" href="https://github.com/onigui" target="_blank" rel="noopener">🔗 GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/guilherme-tiago" target="_blank" rel="noopener">💼 LinkedIn</a>
+      <a class="btn" href="mailto:guiotiago@gmail.com">📧 Contact</a>
+      <div class="lang">
+        <button id="en" class="active">EN</button>
+        <button id="pt">PT</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero grid">
+    <div class="card" data-lang="en">
+      <div class="h">About</div>
+      <p>Full Stack Software Engineer focused on shipping reliable, maintainable and scalable software. I work across the stack — React/Next.js, Node.js/Express, Python/FastAPI — with strong foundations in clean architecture, automation and cloud (Docker, AWS, Render, Vercel). I value performance, DX, testing and measurable impact.</p>
+      <p>Recent work includes a full platform monorepo integrating web, mobile and API, and a credentialing automation system with PDF/Excel generation, backup workflows and documented APIs.</p>
+      <div class="h">Core Skills</div>
+      <p>
+        <span class="pill">React</span><span class="pill">Next.js</span><span class="pill">TypeScript</span>
+        <span class="pill">Node.js</span><span class="pill">Express</span><span class="pill">Python</span>
+        <span class="pill">FastAPI</span><span class="pill">PostgreSQL</span><span class="pill">Prisma</span>
+        <span class="pill">Docker</span><span class="pill">CI/CD</span><span class="pill">Playwright/Cypress</span>
+      </p>
+    </div>
+    <div class="card" data-lang="pt" style="display:none">
+      <div class="h">Sobre</div>
+      <p>Engenheiro de Software Full Stack focado em entregar software confiável, escalável e fácil de manter. Atuo em todo o stack — React/Next.js, Node.js/Express, Python/FastAPI — com base forte em arquitetura limpa, automação e cloud (Docker, AWS, Render, Vercel). Valorizo performance, DX, testes e impacto real.</p>
+      <p>Recentemente construí um monorepo integrando web, mobile e API, e um sistema de credenciamento com automação de PDFs/Excel, rotinas de backup e APIs documentadas.</p>
+      <div class="h">Habilidades</div>
+      <p>
+        <span class="pill">React</span><span class="pill">Next.js</span><span class="pill">TypeScript</span>
+        <span class="pill">Node.js</span><span class="pill">Express</span><span class="pill">Python</span>
+        <span class="pill">FastAPI</span><span class="pill">PostgreSQL</span><span class="pill">Prisma</span>
+        <span class="pill">Docker</span><span class="pill">CI/CD</span><span class="pill">Playwright/Cypress</span>
+      </p>
     </div>
 
-    <section class="terminal" role="region" aria-label="Terminal interativo">
-      <div class="status">Pressione <strong>/</strong> para focar • Digite <strong>help</strong></div>
-      <div class="header">Guilherme Tiago — <span class="badge">Software Engineer</span></div>
-      <pre id="out" aria-live="polite"></pre>
-      <div class="prompt" aria-label="Entrada de comando">
-        <span class="path">onigui@dev</span><span class="symbol">:</span><span class="path">~</span><span class="symbol">$</span>
-        <span class="cmd" id="cmd"></span><span class="cursor" id="cur"></span>
+    <aside class="card">
+      <div class="h" data-en="Highlights" data-pt="Destaques">Highlights</div>
+      <ul>
+        <li data-en="Interactive terminal portfolio and printable bilingual resume."
+            data-pt="Portfólio com terminal interativo e currículo bilíngue imprimível.">
+          Interactive terminal portfolio and printable bilingual resume.
+        </li>
+        <li data-en="Focus on performance, reliability and automation (testing, backups, PDF/Excel generation)."
+            data-pt="Foco em performance, confiabilidade e automação (testes, backups, geração de PDF/Excel).">
+          Focus on performance, reliability and automation (testing, backups, PDF/Excel generation).
+        </li>
+        <li data-en="Clean architecture, strong typing and CI-ready projects."
+            data-pt="Arquitetura limpa, tipagem forte e projetos prontos para CI.">
+          Clean architecture, strong typing and CI-ready projects.
+        </li>
+      </ul>
+    </aside>
+  </section>
+
+  <section class="projects">
+    <div class="h" data-en="Projects" data-pt="Projetos">Projects</div>
+    <div class="row">
+
+      <div class="proj">
+        <h3>Liga do Bem — Full Platform (Monorepo)</h3>
+        <div class="muted">Mobile (React Native/Expo) • Web (Next.js/TS) • API (Node/Express + Prisma/PostgreSQL) • Push (Firebase FCM) • Deploy (Render)</div>
+        <ul>
+          <li>Multi-app: public site + admin portal + upcoming B2B partner app.</li>
+          <li>Auth (JWT/OAuth), CRUD, uploads, notifications, analytics; payments-ready endpoints.</li>
+          <li>Local DX: dockerized DB, Prisma migrations/seed; ready for CI (lint/build/test) and E2E (Playwright/Detox).</li>
+        </ul>
+        <p><a href="https://github.com/onigui/nova-versao-liga-do-bem" target="_blank" rel="noopener">Repository →</a></p>
       </div>
-      <input id="hidden" autocomplete="off" spellcheck="false" />
-      <div class="hint">Dicas: <code>help</code>, <code>whoami</code>, <code>skills</code>, <code>projects</code>, <code>contact</code>, <code>links</code>, <code>theme</code>, <code>clear</code></div>
-      <footer>Feito com HTML/CSS/JS • Hospedado em GitHub Pages • © Guilherme Tiago</footer>
-    </section>
-  </div>
 
-  <script>
-    const out = document.getElementById('out');
-    const cmdEl = document.getElementById('cmd');
-    const hidden = document.getElementById('hidden');
+      <div class="proj">
+        <h3>FAMESP — Credentialing System (Automation-heavy)</h3>
+        <div class="muted">FastAPI backend • Dedicated front-end • Automation: backups, PDF/Excel generation, deploy checks (Render)</div>
+        <ul>
+          <li>JWT/refresh auth, documented API (Swagger/ReDoc), operational scripts for reliability.</li>
+          <li>PDF/Excel generation and DB backup workflows reduce manual effort and errors.</li>
+          <li>Suggested CI: Pytest + Playwright smoke; artifacts with sample PDFs for review.</li>
+        </ul>
+        <p><a href="https://github.com/onigui/famesp" target="_blank" rel="noopener">Repository →</a></p>
+      </div>
 
-    const state = {history:[], idx:-1, theme:'dark'};
+    </div>
+  </section>
 
-    const print = (text='') => { out.innerHTML += text + (text.endsWith('\n')? '':'\n'); out.scrollTop = out.scrollHeight; };
-    const br = () => print('');
+  <footer>
+    <div>📧 <a href="mailto:guiotiago@gmail.com">guiotiago@gmail.com</a></div>
+  </footer>
+</div>
 
-    const banner = () => {
-      print('Welcome to \x1b[36mGT Terminal\x1b[0m — type \x1b[36mhelp\x1b[0m to start.');
-      print('');
-    };
-
-    const colorize = (s)=> s
-      .replaceAll('\x1b[36m','<span style="color:var(--accent2)">')
-      .replaceAll('\x1b[32m','<span style="color:var(--accent)">')
-      .replaceAll('\x1b[0m','</span>');
-
-    const commands = {
-      help(){
-        return `Comandos disponíveis:\n`+
-               `  \x1b[36mwhoami\x1b[0m      Sobre o Guilherme\n`+
-               `  \x1b[36mskills\x1b[0m      Principais competências\n`+
-               `  \x1b[36mprojects\x1b[0m    Projetos em destaque\n`+
-               `  \x1b[36mcontact\x1b[0m     Formas de contato\n`+
-               `  \x1b[36mlinks\x1b[0m       Links úteis\n`+
-               `  \x1b[36mtheme\x1b[0m       Alterna tema (dark/light)\n`+
-               `  \x1b[36mclear\x1b[0m       Limpa a tela`;
-      },
-      whoami(){
-        return `\x1b[32mGuilherme Tiago\x1b[0m — Engenheiro de Software (Full Stack).\n`+
-               `Foco em soluções escaláveis, automação e impacto real de negócio.`;
-      },
-      skills(){
-        return `Linguagens: Python, JavaScript, TypeScript, C#, C++\n`+
-               `Frameworks: Node.js, React, Flask, FastAPI\n`+
-               `Ferramentas: Docker, Git, PostgreSQL, MongoDB\n`+
-               `Áreas: Web, APIs REST, Automação, Integrações, IA`;
-      },
-      projects(){
-        return `1) Word Document Auto-Filler — Geração automática de .docx + PDF, histórico e modo em lote.\n`+
-               `2) Rifa/E-commerce — Sistema com chances e sorteio após 100% vendido.\n`+
-               `3) Automation Tools — Rotinas de integração e ETL leves.\n`+
-               `\nVeja meu GitHub: https://github.com/onigui`;
-      },
-      contact(){
-        return `GitHub: https://github.com/onigui\nLinkedIn: https://www.linkedin.com/in/guilherme-tiago\nE-mail: guiotiago@gmail.com`;
-      },
-      links(){
-        return `CV (PDF): /Em construção \nGitHub: https://github.com/onigui\nPerfil LinkedIn: https://www.linkedin.com/in/guilherme-tiago`;
-      },
-      theme(){
-        if(state.theme==='dark'){
-          document.documentElement.style.setProperty('--bg','#f3f6fa');
-          document.documentElement.style.setProperty('--panel','#ffffff');
-          document.documentElement.style.setProperty('--text','#0c1723');
-          document.documentElement.style.setProperty('--muted','#516479');
-          document.documentElement.style.setProperty('--shadow','0 30px 60px rgba(0,0,0,.12), inset 0 1px 0 rgba(255,255,255,.9)');
-          state.theme='light';
-          return 'Tema: light';
-        } else {
-          document.documentElement.style.removeProperty('--bg');
-          document.documentElement.style.removeProperty('--panel');
-          document.documentElement.style.removeProperty('--text');
-          document.documentElement.style.removeProperty('--muted');
-          document.documentElement.style.removeProperty('--shadow');
-          state.theme='dark';
-          return 'Tema: dark';
-        }
-      },
-      clear(){ out.innerHTML=''; return ''; }
-    };
-
-    function run(raw){
-      const input = raw.trim();
-      if(!input) return;
-      print(`<span class="path">onigui@dev</span><span class="symbol">:</span><span class="path">~</span><span class="symbol">$</span> ${input}`);
-      const [cmd] = input.split(/\s+/);
-      if(commands[cmd]){
-        const res = commands[cmd]();
-        if(res) print(colorize(res));
-      } else {
-        print(`Comando não encontrado: ${cmd}. Tente \x1b[36mhelp\x1b[0m.`);
-      }
-      br();
-    }
-
-    // input handling
-    const focusInput = ()=> hidden.focus();
-    window.addEventListener('keydown', (e)=>{
-      if(e.key === '/'){ e.preventDefault(); focusInput(); return; }
-      if(document.activeElement !== hidden) return; // type only when focused
-      if(e.key === 'Enter'){
-        state.history.unshift(hidden.value);
-        state.idx = -1;
-        run(hidden.value);
-        hidden.value=''; cmdEl.textContent='';
-      } else if(e.key === 'ArrowUp'){
-        state.idx = Math.min(state.idx+1, state.history.length-1);
-        hidden.value = state.history[state.idx] || ''; cmdEl.textContent = hidden.value;
-      } else if(e.key === 'ArrowDown'){
-        state.idx = Math.max(state.idx-1, -1);
-        hidden.value = state.idx===-1 ? '' : (state.history[state.idx]||'');
-        cmdEl.textContent = hidden.value;
-      } else if(e.key.length === 1 || e.key === 'Backspace' || e.key === 'Delete'){
-        setTimeout(()=>{ cmdEl.textContent = hidden.value; }, 0);
-      }
+<script>
+(function(){
+  const en = document.getElementById('en'), pt = document.getElementById('pt');
+  function setLang(l){
+    document.querySelectorAll('[data-lang]').forEach(el=>{
+      el.style.display = (el.getAttribute('data-lang')===l)?'block':'none';
     });
-
-    // clicking anywhere focuses input
-    document.querySelector('.terminal').addEventListener('click', focusInput);
-
-    // init
-    banner();
-    print(colorize('Digite \x1b[36mhelp\x1b[0m para ver comandos.'));
-  </script>
+    document.querySelectorAll('[data-en]').forEach(el=>{
+      el.textContent = el.getAttribute(l==='en'?'data-en':'data-pt');
+    });
+    en.classList.toggle('active', l==='en'); pt.classList.toggle('active', l==='pt');
+    document.documentElement.lang = l;
+  }
+  en.addEventListener('click',()=>setLang('en'));
+  pt.addEventListener('click',()=>setLang('pt'));
+  setLang('en');
+})();
+</script>
 </body>
 </html>
