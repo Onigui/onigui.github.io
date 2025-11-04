@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Favicon + Social -->
+<link rel="icon" type="image/png" href="https://media.licdn.com/dms/image/v2/D4D35AQEdcx0adO9ekA/profile-framedphoto-shrink_200_200/B4DZo1kxuWJIAY-/0/1761835424988?e=1762534800&v=beta&t=p6U2KFPMGeP8VFkvQlDAb7DZQMRVv59rwmA_GOf2r-I">
+<meta property="og:title" content="Guilherme Tiago — Full Stack Software Engineer">
+<meta property="og:description" content="Portfolio and interactive resume of Guilherme Tiago, Full Stack Software Engineer specializing in React, Node.js, Python, and automation.">
+<meta property="og:image" content="https://media.licdn.com/dms/image/v2/D4D35AQEdcx0adO9ekA/profile-framedphoto-shrink_200_200/B4DZo1kxuWJIAY-/0/1761835424988?e=1762534800&v=beta&t=p6U2KFPMGeP8VFkvQlDAb7DZQMRVv59rwmA_GOf2r-I">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Guilherme Tiago — Full Stack Software Engineer">
+<meta name="twitter:description" content="Explore the portfolio and interactive resume of Guilherme Tiago.">
+<meta name="twitter:image" content="https://media.licdn.com/dms/image/v2/D4D35AQEdcx0adO9ekA/profile-framedphoto-shrink_200_200/B4DZo1kxuWJIAY-/0/1761835424988?e=1762534800&v=beta&t=p6U2KFPMGeP8VFkvQlDAb7DZQMRVv59rwmA_GOf2r-I">
+
+<title>Guilherme Tiago — Resume</title>
+<meta name="description" content="Guilherme Tiago — Full Stack Software Engineer – React | Node.js | Python | Automation & AI">
+
+<style>
+  :root{
+    --bg:#ffffff; --ink:#0b1220; --muted:#52617a; --line:#e6ecf2; --brand:#0b4a8f; --chip:#f4f7fb;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#0b0f14; --ink:#e8f0f7; --muted:#aab8cc; --line:#1b2736; --chip:#0f141b; --brand:#4aa0ff; }
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);
+    font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,'Helvetica Neue',Arial}
+  .wrap{max-width:980px;margin:32px auto;padding:0 20px}
+  header{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;
+    border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:22px}
+  .id{display:flex;gap:14px;align-items:center;flex:1 1 auto}
+  .avatar{width:64px;height:64px;border-radius:14px;background-size:cover;background-position:center;
+    background-image:url('https://media.licdn.com/dms/image/v2/D4D35AQEdcx0adO9ekA/profile-framedphoto-shrink_200_200/B4DZo1kxuWJIAY-/0/1761835424988?e=1762534800&v=beta&t=p6U2KFPMGeP8VFkvQlDAb7DZQMRVv59rwmA_GOf2r-I')}
+  h1{margin:0;font-size:28px;line-height:1.2}
+  .tagline{margin:2px 0 0 0;color:var(--muted);font-size:15px}
+  .contacts{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:flex-end}
+  .chip{display:inline-flex;align-items:center;gap:8px;background:var(--chip);padding:6px 10px;border-radius:10px;border:1px solid var(--line);
+    font-size:14px;text-decoration:none;color:inherit}
+  .lang{display:flex;gap:8px}
+  .lang button{border:1px solid var(--line);background:var(--chip);color:inherit;padding:6px 10px;border-radius:10px;cursor:pointer;font-size:14px}
+  .lang button.active{outline:2px solid var(--brand)}
+  main{display:grid;grid-template-columns: 1.2fr .8fr;gap:26px}
+  section{margin-bottom:18px}
+  .h{font-weight:700;color:var(--brand);font-size:14px;letter-spacing:.06em;text-transform:uppercase;margin:0 0 10px 0}
+  .card{border:1px solid var(--line);border-radius:12px;padding:14px 14px;background:var(--bg)}
+  ul{margin:8px 0 0 20px;padding:0}
+  li{margin:6px 0}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .skills .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pill{display:inline-block;background:var(--chip);border:1px solid var(--line);padding:4px 8px;border-radius:999px;margin:4px 6px 0 0;font-size:13px}
+  .two-col{columns:2;column-gap:14px}
+  .muted{color:var(--muted)}
+  .role{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  .role .when{color:var(--muted);font-size:.95em}
+  .projects a{color:var(--brand);text-decoration:none}
+  .projects a:hover{text-decoration:underline}
+  footer{margin:22px 0 40px 0;color:var(--muted);font-size:13px;text-align:center}
+
+  @media (max-width:860px){ main{grid-template-columns:1fr} .two-col{columns:1} }
+  @media print{
+    .wrap{max-width:900px;margin:0;padding:0}
+    header,.card{border-color:#bbb}
+    .lang{display:none}
+    a{color:#000;text-decoration:none}
+    body{background:#fff;color:#000}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="id">
+      <div class="avatar" aria-hidden="true"></div>
+      <div>
+        <h1 data-en="Guilherme Tiago" data-pt="Guilherme Tiago">Guilherme Tiago</h1>
+        <div class="tagline" data-en="Full Stack Software Engineer – React | Node.js | Python | Automation &amp; AI"
+             data-pt="Engenheiro de Software Full Stack – React | Node.js | Python | Automação &amp; IA">
+          Full Stack Software Engineer – React | Node.js | Python | Automation &amp; AI
+        </div>
+      </div>
+    </div>
+    <div class="contacts">
+      <a class="chip" href="mailto:guiotiago@gmail.com">📧&nbsp;guiotiago@gmail.com</a>
+      <a class="chip" href="https://onigui.github.io" target="_blank" rel="noopener">🌐&nbsp;onigui.github.io</a>
+      <a class="chip" href="https://github.com/onigui" target="_blank" rel="noopener">💻&nbsp;github.com/onigui</a>
+      <a class="chip" href="https://www.linkedin.com/in/guilherme-tiago" target="_blank" rel="noopener">💼&nbsp;LinkedIn</a>
+      <div class="lang">
+        <button id="btn-en" class="active">EN</button>
+        <button id="btn-pt">PT</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div>
+      <section>
+        <h3 class="h" data-en="Professional Summary" data-pt="Resumo Profissional">Professional Summary</h3>
+        <div class="card" data-lang="en">
+          Full Stack Software Engineer passionate about solving real-world problems through clean, efficient, and scalable software.
+          Experienced across multiple technologies, from backend automation to front-end development and system architecture.
+          Strong adaptability to any stack or environment, with focus on performance, maintainability, and tangible impact.
+          Currently completing a B.Sc. in Software Engineering and building projects that combine automation, UI/UX, and cloud integration.
+        </div>
+        <div class="card" data-lang="pt" style="display:none">
+          Engenheiro de Software Full Stack apaixonado por resolver problemas reais com código limpo, eficiente e escalável.
+          Experiência em múltiplas tecnologias, de automação backend a front-end e arquitetura de sistemas.
+          Alta adaptabilidade a qualquer stack, com foco em desempenho, manutenção e impacto real.
+          Cursando Bacharelado em Engenharia de Software e desenvolvendo projetos que combinam automação, UI/UX e integração em nuvem.
+        </div>
+      </section>
+
+      <section class="skills">
+        <h3 class="h" data-en="Technical Skills" data-pt="Habilidades Técnicas">Technical Skills</h3>
+        <div class="card">
+          <div class="grid">
+            <div>
+              <div class="muted" data-en="Languages" data-pt="Linguagens">Languages</div>
+              <div class="two-col">
+                <span class="pill">Python</span><span class="pill">JavaScript</span><span class="pill">TypeScript</span>
+                <span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">SQL</span>
+              </div>
+            </div>
+            <div>
+              <div class="muted">Frontend</div>
+              <div class="two-col">
+                <span class="pill">React</span><span class="pill">Next.js</span><span class="pill">TailwindCSS</span><span class="pill">Bootstrap</span>
+                <span class="pill">React Native</span><span class="pill">Expo</span>
+              </div>
+            </div>
+            <div>
+              <div class="muted">Backend</div>
+              <div class="two-col">
+                <span class="pill">Node.js</span><span class="pill">Express.js</span><span class="pill">FastAPI</span><span class="pill">Flask</span><span class="pill">Django</span>
+              </div>
+            </div>
+            <div>
+              <div class="muted" data-en="Databases" data-pt="Bancos de Dados">Databases</div>
+              <div class="two-col">
+                <span class="pill">PostgreSQL</span><span class="pill">MongoDB</span><span class="pill">SQLite</span><span class="pill">Redis</span><span class="pill">Prisma</span>
+              </div>
+            </div>
+            <div>
+              <div class="muted">Automation / AI</div>
+              <div class="two-col">
+                <span class="pill">APIs</span><span class="pill">ETL</span><span class="pill">PDF/Word</span><span class="pill">LLM Integration</span><span class="pill">Scripting</span>
+              </div>
+            </div>
+            <div>
+              <div class="muted">DevOps & Tools</div>
+              <div class="two-col">
+                <span class="pill">Git</span><span class="pill">Docker</span><span class="pill">AWS</span><span class="pill">Render</span><span class="pill">Vercel</span>
+                <span class="pill">GitHub Actions</span><span class="pill">Vite</span><span class="pill">Webpack</span><span class="pill">CI/CD</span>
+              </div>
+            </div>
+            <div>
+              <div class="muted">Testing</div>
+              <div class="two-col">
+                <span class="pill">Jest</span><span class="pill">React Testing Library</span><span class="pill">Cypress</span><span class="pill">Playwright</span><span class="pill">Detox</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3 class="h" data-en="Professional Experience" data-pt="Experiência Profissional">Professional Experience</h3>
+        <div class="card">
+          <div class="role"><strong data-en="Independent Software Engineer (Freelance Projects)"
+                                     data-pt="Engenheiro de Software Independente (Projetos Freelance)">Independent Software Engineer (Freelance Projects)</strong>
+            <span class="when">2022 – Present · Remote</span></div>
+          <ul>
+            <li data-en="Designed and developed full-stack systems, automation tools, and APIs for internal workflows and small businesses."
+                data-pt="Desenvolvimento de sistemas completos, automações e APIs para uso interno e pequenas empresas.">
+              Designed and developed full-stack systems, automation tools, and APIs for internal workflows and small businesses.
+            </li>
+            <li data-en="Created a document automation platform (Python + Flask + PDF generation) reducing manual work by 80%."
+                data-pt="Criação de plataforma de automação de documentos (Python + Flask + geração de PDF) com redução de 80% no trabalho manual.">
+              Created a document automation platform (Python + Flask + PDF generation) reducing manual work by 80%.
+            </li>
+            <li data-en="Built a raffle-style e-commerce system with automated draws and secure transactions."
+                data-pt="Desenvolvimento de sistema de rifas/e-commerce com sorteio automatizado e transações seguras.">
+              Built a raffle-style e-commerce system with automated draws and secure transactions.
+            </li>
+            <li data-en="Delivered dashboards/admin panels in React + TypeScript focused on performance and UX."
+                data-pt="Criação de dashboards e painéis administrativos em React + TypeScript com foco em performance e UX.">
+              Delivered dashboards/admin panels in React + TypeScript focused on performance and UX.
+            </li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="role"><strong data-en="Software Developer — Personal & Academic Projects"
+                                     data-pt="Desenvolvedor de Software — Projetos Pessoais e Acadêmicos">Software Developer — Personal & Academic Projects</strong>
+            <span class="when">2021 – 2022</span></div>
+          <ul>
+            <li data-en="Developed automation scripts, REST APIs, and integration tools in Python and Node.js."
+                data-pt="Desenvolvimento de scripts de automação, APIs REST e ferramentas de integração em Python e Node.js.">
+              Developed automation scripts, REST APIs, and integration tools in Python and Node.js.
+            </li>
+            <li data-en="Prototyped open-source tools focused on data processing and UI optimization."
+                data-pt="Prototipagem de ferramentas open source focadas em processamento de dados e otimização de UI.">
+              Prototyped open-source tools focused on data processing and UI optimization.
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <aside>
+      <section>
+        <h3 class="h" data-en="Education" data-pt="Formação">Education</h3>
+        <div class="card">
+          <strong>B.Sc. in Software Engineering</strong> <span class="muted" data-en="(In Progress)"
+                                                               data-pt="(Em andamento)">(In Progress)</span><br>
+          Centro Universitário Anhanguera Pitágoras Ampli<br>
+          <span class="muted" data-en="Expected Graduation: 2026" data-pt="Conclusão prevista: 2026">Expected Graduation: 2026</span>
+        </div>
+      </section>
+
+      <section class="projects">
+        <h3 class="h" data-en="Projects & Portfolio" data-pt="Projetos & Portfólio">Projects & Portfolio</h3>
+        <div class="card">
+          <ul>
+            <li>
+              <strong data-en="Liga do Bem — Full Platform (Monorepo)"
+                      data-pt="Liga do Bem — Plataforma Completa (Monorepo)">Liga do Bem — Full Platform (Monorepo)</strong>
+              <div class="muted" data-en="Mobile (React Native/Expo) • Web (Next.js/TS) • API (Node/Express + Prisma/PostgreSQL) • Push (Firebase FCM) • Deploy (Render)"
+                   data-pt="Mobile (React Native/Expo) • Web (Next.js/TS) • API (Node/Express + Prisma/PostgreSQL) • Push (Firebase FCM) • Deploy (Render)">
+                Mobile (React Native/Expo) • Web (Next.js/TS) • API (Node/Express + Prisma/PostgreSQL) • Push (Firebase FCM) • Deploy (Render)
+              </div>
+              <div><a href="https://github.com/onigui/nova-versao-liga-do-bem" target="_blank" rel="noopener">github.com/onigui/nova-versao-liga-do-bem</a></div>
+              <ul>
+                <li data-en="Multi-app architecture: public site with app download, separate admin portal, and upcoming B2B partner app."
+                    data-pt="Arquitetura multi-app: site público com download do app, portal admin separado e futuro app B2B para parceiros.">
+                  Multi-app architecture: public site with app download, separate admin portal, and upcoming B2B partner app.
+                </li>
+                <li data-en="Auth (JWT/OAuth), CRUD, uploads, notifications, reports/analytics, and payments-ready endpoints."
+                    data-pt="Auth (JWT/OAuth), CRUD, uploads, notificações, relatórios/analytics e endpoints prontos para pagamentos.">
+                  Auth (JWT/OAuth), CRUD, uploads, notifications, reports/analytics, and payments-ready endpoints.
+                </li>
+                <li data-en="Local DX: dockerized DB, Prisma migrations, seed; ready for CI (lint/build/test) and E2E (Playwright/Detox)."
+                    data-pt="DX local: DB com Docker, migrações Prisma, seed; pronto para CI (lint/build/test) e E2E (Playwright/Detox).">
+                  Local DX: dockerized DB, Prisma migrations, seed; ready for CI (lint/build/test) and E2E (Playwright/Detox).
+                </li>
+              </ul>
+            </li>
+
+            <li style="margin-top:10px;">
+              <strong data-en="FAMESP — Credentialing System (Automation-heavy)"
+                      data-pt="FAMESP — Sistema de Credenciamento (Automação)">
+                FAMESP — Credentialing System (Automation-heavy)
+              </strong>
+              <div class="muted" data-en="FastAPI backend • Front-end client • Automation scripts: backups, PDF generation, deploy checks (Render)"
+                   data-pt="Back-end FastAPI • Front-end dedicado • Automação: backups, geração de PDFs, checagens de deploy (Render)">
+                FastAPI backend • Front-end client • Automation scripts: backups, PDF generation, deploy checks (Render)
+              </div>
+              <div><a href="https://github.com/onigui/famesp" target="_blank" rel="noopener">github.com/onigui/famesp</a></div>
+              <ul>
+                <li data-en="JWT/refresh auth, documented API (Swagger/ReDoc), and operational scripts for reliability."
+                    data-pt="Auth com JWT/refresh, API documentada (Swagger/ReDoc) e scripts operacionais para confiabilidade.">
+                  JWT/refresh auth, documented API (Swagger/ReDoc), and operational scripts for reliability.
+                </li>
+                <li data-en="PDF/Excel generation and database backup workflows to reduce manual workload and errors."
+                    data-pt="Geração de PDF/Excel e rotinas de backup do banco para reduzir trabalho manual e erros.">
+                  PDF/Excel generation and database backup workflows to reduce manual workload and errors.
+                </li>
+                <li data-en="Suggested CI: Pytest + Playwright smoke; artifacts with sample PDFs for review."
+                    data-pt="CI sugerido: Pytest + Playwright smoke; artefatos com PDFs de exemplo para revisão.">
+                  Suggested CI: Pytest + Playwright smoke; artifacts with sample PDFs for review.
+                </li>
+              </ul>
+            </li>
+
+            <li style="margin-top:10px;">
+              <a href="https://onigui.github.io" target="_blank" rel="noopener">Interactive Portfolio (Terminal)</a>
+              &nbsp;•&nbsp;
+              <a href="https://github.com/onigui" target="_blank" rel="noopener">GitHub — Selected Work</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h3 class="h" data-en="Languages" data-pt="Idiomas">Languages</h3>
+        <div class="card"><span class="pill">Portuguese — Native</span> <span class="pill">English — Professional</span></div>
+      </section>
+    </aside>
+  </main>
+
+  <footer>
+    <span class="muted" data-en="Print as PDF: Ctrl/Cmd + P (page fits to one sheet)"
+          data-pt="Imprima em PDF: Ctrl/Cmd + P (página cabe em uma folha)">Print as PDF: Ctrl/Cmd + P (page fits to one sheet)</span>
+  </footer>
+</div>
+
+<script>
+  (function(){
+    const btnEN = document.getElementById('btn-en');
+    const btnPT = document.getElementById('btn-pt');
+    function setLang(lang){
+      document.querySelectorAll('[data-en]').forEach(el=>{
+        el.textContent = el.getAttribute(lang==='en' ? 'data-en' : 'data-pt');
+      });
+      document.querySelectorAll('[data-lang]').forEach(el=>{
+        el.style.display = (el.getAttribute('data-lang')===lang)?'block':'none';
+      });
+      btnEN.classList.toggle('active', lang==='en');
+      btnPT.classList.toggle('active', lang==='pt');
+      document.documentElement.lang = lang;
+    }
+    btnEN.addEventListener('click', ()=>setLang('en'));
+    btnPT.addEventListener('click', ()=>setLang('pt'));
+    setLang('en');
+  })();
+</script>
+</body>
+</html>
