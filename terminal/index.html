@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GT — Interactive Terminal</title>
+<link rel="icon" href="../avatar.png">
+<style>
+  :root{--bg:#0b0f14;--ink:#e8f0f7;--muted:#9fb3c8;--brand:#4aa0ff}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font:15px/1.6 ui-monospace,Consolas,Menlo,monospace}
+  .wrap{max-width:900px;margin:0 auto;padding:26px}
+  .prompt{display:flex;gap:10px}
+  input{flex:1;background:transparent;border:none;color:var(--ink);outline:none;font:inherit}
+  .muted{color:var(--muted)}
+  .brand{color:var(--brand)}
+  .line{white-space:pre-wrap}
+  .hl{background:#0f1722;border-left:3px solid #1f2d40;padding:.2rem .5rem;border-radius:4px}
+  a{color:var(--brand);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap" id="term">
+  <div class="line">Welcome to <span class="brand">Guilherme Tiago</span> interactive terminal. Type <span class="hl">help</span>.</div>
+</div>
+<div class="wrap prompt">
+  <div class="brand">gt@portfolio:~$</div>
+  <input id="inp" autocomplete="off" autofocus />
+</div>
+<script>
+(function(){
+  const term = document.getElementById('term');
+  const inp = document.getElementById('inp');
+
+  const links = {
+    github: 'https://github.com/onigui',
+    linkedin: 'https://www.linkedin.com/in/guilherme-tiago',
+    resume:  'https://onigui.github.io/resume/',
+    home:    'https://onigui.github.io/'
+  };
+
+  const projects = [
+    { name:'Liga do Bem — Monorepo', url:'https://github.com/onigui/nova-versao-liga-do-bem' },
+    { name:'FAMESP — Credentialing System', url:'https://github.com/onigui/famesp' }
+  ];
+
+  function print(html){ const d=document.createElement('div'); d.className='line'; d.innerHTML=html; term.appendChild(d); window.scrollTo(0,document.body.scrollHeight); }
+  function help(){
+    print(`Commands:
+  help            show this help
+  about           who am I
+  projects        list key repositories
+  github          open GitHub
+  linkedin        open LinkedIn
+  resume          open resume
+  contact         show email
+  clear           clear the screen`);
+  }
+  function about(){
+    print(`Full Stack Software Engineer — React/Next.js, Node.js/Express, Python/FastAPI.
+Focus on clean architecture, automation (PDF/Excel, backups), CI/CD and performance.`);
+  }
+  function listProjects(){
+    projects.forEach(p=>print(`- ${p.name} → <a href="${p.url}" target="_blank">${p.url}</a>`));
+  }
+  function contact(){ print(`Email: <a href="mailto:guiotiago@gmail.com">guiotiago@gmail.com</a>`); }
+
+  const actions = {
+    help, about, projects:listProjects, contact,
+    github(){ window.open(links.github,'_blank'); print('Opening GitHub...'); },
+    linkedin(){ window.open(links.linkedin,'_blank'); print('Opening LinkedIn...'); },
+    resume(){ window.open(links.resume,'_blank'); print('Opening resume...'); },
+    clear(){ term.innerHTML=''; }
+  };
+
+  inp.addEventListener('keydown',e=>{
+    if(e.key==='Enter'){
+      const cmd = inp.value.trim().toLowerCase();
+      print(`<span class="brand">gt@portfolio:~$</span> ${cmd}`);
+      (actions[cmd]||(()=>print(`command not found: ${cmd}. Try <span class="hl">help</span>.`)))();
+      inp.value='';
+    }
+  });
+})();
+</script>
+</body>
+</html>
