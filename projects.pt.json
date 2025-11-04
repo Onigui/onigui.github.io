@@ -1,0 +1,24 @@
+{
+  "projects": [
+    {
+      "title": "Liga do Bem — Plataforma Completa (Monorepo)",
+      "repo": "https://github.com/onigui/nova-versao-liga-do-bem",
+      "stack": "Mobile (React Native/Expo) • Web (Next.js/TS) • API (Node/Express + Prisma/PostgreSQL) • Push (Firebase FCM) • Deploy (Render)",
+      "bullets": [
+        "Arquitetura multi-app: site público + portal administrativo + futuro app B2B para parceiros.",
+        "Autenticação (JWT/OAuth), CRUD, uploads, notificações, analytics; endpoints prontos para pagamentos.",
+        "DX local: banco via Docker, migrações/seed do Prisma; pronto para CI (lint/build/test) e E2E (Playwright/Detox)."
+      ]
+    },
+    {
+      "title": "FAMESP — Sistema de Credenciamento (Automação)",
+      "repo": "https://github.com/onigui/famesp",
+      "stack": "Back-end FastAPI • Front-end dedicado • Automação: backups, geração de PDF/Excel, checagens de deploy (Render)",
+      "bullets": [
+        "Auth com JWT/refresh, API documentada (Swagger/ReDoc) e scripts operacionais de confiabilidade.",
+        "Rotinas de geração de PDF/Excel e backup de banco reduzem esforço manual e erros.",
+        "CI sugerido: Pytest + Playwright smoke; artefatos com PDFs de exemplo para revisão."
+      ]
+    }
+  ]
+}
