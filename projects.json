@@ -1,0 +1,24 @@
+{
+  "projects": [
+    {
+      "title": "Liga do Bem — Full Platform (Monorepo)",
+      "repo": "https://github.com/onigui/nova-versao-liga-do-bem",
+      "stack": "Mobile (React Native/Expo) • Web (Next.js/TS) • API (Node/Express + Prisma/PostgreSQL) • Push (Firebase FCM) • Deploy (Render)",
+      "bullets": [
+        "Multi-app: public site + admin portal + upcoming B2B partner app.",
+        "Auth (JWT/OAuth), CRUD, uploads, notifications, analytics; payments-ready endpoints.",
+        "Local DX: dockerized DB, Prisma migrations/seed; CI-ready (lint/build/test) & E2E (Playwright/Detox)."
+      ]
+    },
+    {
+      "title": "FAMESP — Credentialing System (Automation-heavy)",
+      "repo": "https://github.com/onigui/famesp",
+      "stack": "FastAPI backend • Dedicated front-end • Automation: backups, PDF/Excel generation, deploy checks (Render)",
+      "bullets": [
+        "JWT/refresh auth, documented API (Swagger/ReDoc), operational reliability scripts.",
+        "PDF/Excel generation and DB backup workflows reduce manual effort and errors.",
+        "Suggested CI: Pytest + Playwright smoke; artifacts with sample PDFs for review."
+      ]
+    }
+  ]
+}
