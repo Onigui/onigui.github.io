@@ -158,5 +158,55 @@ footer{margin:22px 0 40px;color:var(--muted);text-align:center;font-size:13px}
   setLang('en');
 })();
 </script>
+  <script>
+(async function loadProjects(){
+  const row = document.getElementById('projects-row');
+  try {
+    const res = await fetch('./projects.json', {cache: 'no-store'});
+    if(!res.ok) throw new Error('fetch failed');
+    const data = await res.json();
+
+    const frag = document.createDocumentFragment();
+    (data.projects || []).forEach(p => {
+      const el = document.createElement('div');
+      el.className = 'proj';
+      el.innerHTML = `
+        <h3>${p.title}</h3>
+        <div class="muted">${p.stack}</div>
+        <ul>${(p.bullets||[]).map(b=>`<li>${b}</li>`).join('')}</ul>
+        <p><a href="${p.repo}" target="_blank" rel="noopener">Repository →</a></p>
+      `;
+      frag.appendChild(el);
+    });
+    row.innerHTML = '';
+    row.appendChild(frag);
+  } catch (e) {
+    // fallback estático caso o JSON não carregue
+    row.innerHTML = `
+      <div class="proj">
+        <h3>Liga do Bem — Full Platform (Monorepo)</h3>
+        <div class="muted">Mobile (React Native/Expo) • Web (Next.js/TS) • API (Node/Express + Prisma/PostgreSQL) • Push (Firebase FCM) • Deploy (Render)</div>
+        <ul>
+          <li>Multi-app: public site + admin portal + upcoming B2B partner app.</li>
+          <li>Auth (JWT/OAuth), CRUD, uploads, notifications, analytics; payments-ready endpoints.</li>
+          <li>Local DX: dockerized DB, Prisma migrations/seed; CI-ready (lint/build/test) & E2E (Playwright/Detox).</li>
+        </ul>
+        <p><a href="https://github.com/onigui/nova-versao-liga-do-bem" target="_blank" rel="noopener">Repository →</a></p>
+      </div>
+      <div class="proj">
+        <h3>FAMESP — Credentialing System (Automation-heavy)</h3>
+        <div class="muted">FastAPI backend • Dedicated front-end • Automation: backups, PDF/Excel generation, deploy checks (Render)</div>
+        <ul>
+          <li>JWT/refresh auth, documented API (Swagger/ReDoc), operational reliability scripts.</li>
+          <li>PDF/Excel generation and DB backup workflows reduce manual effort and errors.</li>
+          <li>Suggested CI: Pytest + Playwright smoke; artifacts with sample PDFs for review.</li>
+        </ul>
+        <p><a href="https://github.com/onigui/famesp" target="_blank" rel="noopener">Repository →</a></p>
+      </div>
+    `;
+  }
+})();
+</script>
+
 </body>
 </html>
