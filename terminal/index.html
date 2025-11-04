@@ -5,80 +5,201 @@
 <title>GT — Interactive Terminal</title>
 <link rel="icon" href="../avatar.png">
 <style>
-  :root{--bg:#0b0f14;--ink:#e8f0f7;--muted:#9fb3c8;--brand:#4aa0ff}
+  :root{--bg:#0b0f14;--ink:#e8f0f7;--muted:#9fb3c8;--brand:#4aa0ff;--panel:#0e1520;--line:#1b2736}
   html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font:15px/1.6 ui-monospace,Consolas,Menlo,monospace}
-  .wrap{max-width:900px;margin:0 auto;padding:26px}
-  .prompt{display:flex;gap:10px}
-  input{flex:1;background:transparent;border:none;color:var(--ink);outline:none;font:inherit}
-  .muted{color:var(--muted)}
+  .wrap{max-width:980px;margin:0 auto;padding:26px}
+  .prompt{position:sticky;bottom:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,.35));backdrop-filter:blur(2px);padding:16px 26px;display:flex;gap:10px;border-top:1px solid var(--line)}
   .brand{color:var(--brand)}
+  .muted{color:var(--muted)}
   .line{white-space:pre-wrap}
-  .hl{background:#0f1722;border-left:3px solid #1f2d40;padding:.2rem .5rem;border-radius:4px}
+  .hl{background:#0f1722;border-left:3px solid #1f2d40;padding:.1rem .4rem;border-radius:4px}
+  input{flex:1;background:transparent;border:none;color:var(--ink);outline:none;font:inherit}
   a{color:var(--brand);text-decoration:none}
+  .box{border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:10px}
 </style>
 </head>
 <body>
 <div class="wrap" id="term">
   <div class="line">Welcome to <span class="brand">Guilherme Tiago</span> interactive terminal. Type <span class="hl">help</span>.</div>
 </div>
-<div class="wrap prompt">
+
+<div class="prompt">
   <div class="brand">gt@portfolio:~$</div>
   <input id="inp" autocomplete="off" autofocus />
 </div>
+
 <script>
 (function(){
   const term = document.getElementById('term');
-  const inp = document.getElementById('inp');
+  const inp  = document.getElementById('inp');
 
   const links = {
-    github: 'https://github.com/onigui',
+    github:   'https://github.com/onigui',
     linkedin: 'https://www.linkedin.com/in/guilherme-tiago',
-    resume:  'https://onigui.github.io/resume/',
-    home:    'https://onigui.github.io/'
+    resume:   'https://onigui.github.io/resume/',
+    home:     'https://onigui.github.io/',
+    email:    'mailto:guiotiago@gmail.com'
+  };
+
+  const skills = {
+    Languages: ['Python','JavaScript','TypeScript','HTML','CSS','SQL'],
+    Frontend: ['React','Next.js','TailwindCSS','Bootstrap','React Native','Expo'],
+    Backend: ['Node.js','Express.js','FastAPI','Flask','Django'],
+    Databases: ['PostgreSQL','MongoDB','SQLite','Redis','Prisma'],
+    'DevOps & Tools': ['Git','Docker','AWS','Render','Vercel','GitHub Actions','Vite','Webpack','CI/CD'],
+    Testing: ['Jest','React Testing Library','Cypress','Playwright','Detox'],
+    'Automation / AI': ['APIs','ETL','PDF/Word','LLM Integration','Scripting']
   };
 
   const projects = [
-    { name:'Liga do Bem — Monorepo', url:'https://github.com/onigui/nova-versao-liga-do-bem' },
-    { name:'FAMESP — Credentialing System', url:'https://github.com/onigui/famesp' }
+    {
+      name: 'Liga do Bem — Full Platform (Monorepo)',
+      repo: 'https://github.com/onigui/nova-versao-liga-do-bem',
+      stack: 'Mobile (React Native/Expo) • Web (Next.js/TS) • API (Node/Express + Prisma/PostgreSQL) • Push (Firebase FCM) • Deploy (Render)',
+      bullets: [
+        'Multi-app: public site + admin portal + upcoming B2B partner app.',
+        'Auth (JWT/OAuth), CRUD, uploads, notifications, analytics; payments-ready endpoints.',
+        'Local DX: dockerized DB, Prisma migrations/seed; CI-ready (lint/build/test) & E2E (Playwright/Detox).'
+      ]
+    },
+    {
+      name: 'FAMESP — Credentialing System (Automation-heavy)',
+      repo: 'https://github.com/onigui/famesp',
+      stack: 'FastAPI backend • Dedicated front-end • Automation: backups, PDF/Excel generation, deploy checks (Render)',
+      bullets: [
+        'JWT/refresh auth, documented API (Swagger/ReDoc), reliability ops scripts.',
+        'PDF/Excel generation and DB backup workflows reduce manual effort and errors.',
+        'Suggested CI: Pytest + Playwright smoke; artifacts with sample PDFs for review.'
+      ]
+    }
   ];
 
+  const experience = [
+    {
+      role: 'Independent Software Engineer (Freelance Projects)',
+      when: '2022 – Present · Remote',
+      bullets: [
+        'Built full-stack systems, automation tools and APIs for internal workflows and SMBs.',
+        'Document automation (Python + Flask/FastAPI + PDF/Excel) with ~80% manual work reduction.',
+        'Raffle-style e-commerce: secure flows, automated draws; admin in React + TypeScript.',
+        'Ops scripts for backups, deploy checks, monitoring; projects CI-ready (lint/build/test).'
+      ]
+    },
+    {
+      role: 'Software Developer — Personal & Academic Projects',
+      when: '2021 – 2022',
+      bullets: [
+        'Automation scripts, REST APIs and integration tools in Python and Node.js.',
+        'Open-source prototypes for data processing and UI optimization.'
+      ]
+    }
+  ];
+
+  const edu = 'B.Sc. in Software Engineering (in progress) — Centro Universitário Anhanguera Pitágoras Ampli';
+  const langs = ['Portuguese — Native','English — Professional'];
+
+  // helpers
   function print(html){ const d=document.createElement('div'); d.className='line'; d.innerHTML=html; term.appendChild(d); window.scrollTo(0,document.body.scrollHeight); }
+  function hr(){ print(''); }
+
+  // commands
   function help(){
-    print(`Commands:
-  help            show this help
-  about           who am I
-  projects        list key repositories
-  github          open GitHub
-  linkedin        open LinkedIn
-  resume          open resume
-  contact         show email
-  clear           clear the screen`);
+    print(`<div class="box">Commands:
+  <span class="hl">help</span>            show this help
+  <span class="hl">about</span>           who am I
+  <span class="hl">skills</span>          list technical skills by category
+  <span class="hl">projects</span>        list key repositories with details
+  <span class="hl">experience</span>      summarize professional experience
+  <span class="hl">edu</span>             education
+  <span class="hl">lang</span>            languages
+  <span class="hl">github</span>          open GitHub
+  <span class="hl">linkedin</span>        open LinkedIn
+  <span class="hl">resume</span>          open resume page
+  <span class="hl">contact</span>         show email
+  <span class="hl">all</span>             print everything
+  <span class="hl">clear</span>           clear the screen</div>`);
   }
+
   function about(){
     print(`Full Stack Software Engineer — React/Next.js, Node.js/Express, Python/FastAPI.
-Focus on clean architecture, automation (PDF/Excel, backups), CI/CD and performance.`);
+Focus on clean architecture, automation (PDF/Excel, backups, ETL), testing and cloud (Docker, AWS, Render, Vercel).
+Goal: ship reliable, maintainable and scalable software with measurable impact.`);
   }
+
+  function showSkills(){
+    Object.keys(skills).forEach(cat=>{
+      print(`\n<span class="brand">${cat}</span>\n${skills[cat].map(s=>` • ${s}`).join('')}`);
+    });
+    hr();
+  }
+
   function listProjects(){
-    projects.forEach(p=>print(`- ${p.name} → <a href="${p.url}" target="_blank">${p.url}</a>`));
+    projects.forEach(p=>{
+      print(`\n<span class="brand">${p.name}</span>\n${p.stack}\n- ${p.bullets.join('\n- ')}\nRepo → <a href="${p.repo}" target="_blank">${p.repo}</a>`);
+    });
+    hr();
   }
-  function contact(){ print(`Email: <a href="mailto:guiotiago@gmail.com">guiotiago@gmail.com</a>`); }
+
+  function showExperience(){
+    experience.forEach(e=>{
+      print(`\n<span class="brand">${e.role}</span>  <span class="muted">${e.when}</span>\n- ${e.bullets.join('\n- ')}`);
+    });
+    hr();
+  }
+
+  function showEdu(){ print(`<span class="brand">Education</span>\n${edu}`); hr(); }
+  function showLang(){ print(`<span class="brand">Languages</span>\n- ${langs.join('\n- ')}`); hr(); }
+  function contact(){ print(`Email: <a href="${links.email}">guiotiago@gmail.com</a>`); }
+  function openGitHub(){ window.open(links.github,'_blank'); print('Opening GitHub...'); }
+  function openLinkedIn(){ window.open(links.linkedin,'_blank'); print('Opening LinkedIn...'); }
+  function openResume(){ window.open(links.resume,'_blank'); print('Opening resume...'); }
+
+  function all(){
+    about(); showSkills(); listProjects(); showExperience(); showEdu(); showLang(); contact();
+  }
 
   const actions = {
-    help, about, projects:listProjects, contact,
-    github(){ window.open(links.github,'_blank'); print('Opening GitHub...'); },
-    linkedin(){ window.open(links.linkedin,'_blank'); print('Opening LinkedIn...'); },
-    resume(){ window.open(links.resume,'_blank'); print('Opening resume...'); },
-    clear(){ term.innerHTML=''; }
+    help, about, skills:showSkills, projects:listProjects, experience:showExperience, edu:showEdu, lang:showLang,
+    contact, github:openGitHub, linkedin:openLinkedIn, resume:openResume,
+    clear(){ term.innerHTML=''; },
+    // aliases
+    cv:openResume, repo:openGitHub, email:contact
   };
+
+  // simple history + tab suggestions
+  const hist = []; let idx = -1;
+  const cmds = Object.keys(actions);
+
+  function suggest(prefix){
+    if(!prefix) return '';
+    const m = cmds.filter(c=>c.startsWith(prefix.toLowerCase()));
+    return m.length===1 ? m[0] : '';
+  }
 
   inp.addEventListener('keydown',e=>{
     if(e.key==='Enter'){
-      const cmd = inp.value.trim().toLowerCase();
+      const raw = inp.value; const cmd = raw.trim();
       print(`<span class="brand">gt@portfolio:~$</span> ${cmd}`);
-      (actions[cmd]||(()=>print(`command not found: ${cmd}. Try <span class="hl">help</span>.`)))();
+      hist.push(cmd); idx = hist.length;
+      const fn = actions[cmd.toLowerCase()];
+      (fn ? fn : ()=>print(`command not found: ${cmd}. Try <span class="hl">help</span>.`))();
       inp.value='';
+    }else if(e.key==='ArrowUp'){
+      if(hist.length && idx>0){ idx--; inp.value = hist[idx]; }
+      e.preventDefault();
+    }else if(e.key==='ArrowDown'){
+      if(hist.length && idx<hist.length-1){ idx++; inp.value = hist[idx]; }
+      else { idx = hist.length; inp.value=''; }
+      e.preventDefault();
+    }else if(e.key==='Tab'){
+      e.preventDefault();
+      const s = suggest(inp.value);
+      if(s) inp.value = s;
     }
   });
+
+  // greet
+  help();
 })();
 </script>
 </body>
