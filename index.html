@@ -23,6 +23,9 @@
   html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 system-ui,Segoe UI,Inter,Roboto,Arial}
   a{color:inherit;text-decoration:none}
   .wrap{max-width:var(--w);margin:0 auto;padding:24px 16px 40px}
+  /* grid de 1 coluna no aside */
+.col{display:grid;grid-template-columns:1fr;gap:14px}
+
 
   /* HEADER */
   header{position:sticky;top:0;z-index:10;background:linear-gradient(180deg, rgba(11,15,20,.9), rgba(11,15,20,.86));
@@ -163,11 +166,7 @@
         </div>
       </div>
 
-      <!-- PROJECTS -->
-      <div class="section">
-        <div class="h" data-en="Projects" data-pt="Projetos">Projects</div>
-        <div id="projects-row" class="row"></div>
-      </div>
+      
     </section>
 
     <!-- RIGHT -->
@@ -188,6 +187,12 @@
         </ul>
       </div>
     </aside>
+
+    <div class="section">
+  <div class="h" data-en="Projects" data-pt="Projetos">Projects</div>
+  <div id="projects-right" class="col"></div>
+</div>
+
   </main>
 
   <footer>
@@ -225,7 +230,7 @@
   ptBtn.addEventListener('click', ()=>setLang('pt'));
 
   // projects loader (equal heights feel via flex in .proj)
-  const projectsRow = document.getElementById('projects-row');
+  const projectsRow = document.getElementById('projects-right');
   async function renderProjects(lang){
     const file = lang==='pt' ? './projects.pt.json' : './projects.json';
     try{
