@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Guilherme Tiago — Resume</title>
+<link rel="icon" href="../avatar.png">
+<meta name="description" content="Guilherme Tiago — Full Stack Software Engineer">
+<style>
+  :root{--bg:#ffffff;--ink:#0b1220;--muted:#52617a;--line:#e6ecf2;--brand:#0b4a8f;--chip:#f4f7fb}
+  @media (prefers-color-scheme:dark){:root{--bg:#0b0f14;--ink:#e8f0f7;--muted:#aab8cc;--line:#1b2736;--brand:#4aa0ff;--chip:#0f141b}}
+  *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,Segoe UI,Roboto,Arial}
+  .wrap{max-width:980px;margin:32px auto;padding:0 20px}
+  header{display:flex;gap:14px;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:16px}
+  .id{display:flex;gap:12px;align-items:center}
+  .avatar{width:64px;height:64px;border-radius:14px;background:url('../avatar.png') center/cover;border:1px solid var(--line)}
+  h1{margin:0;font-size:28px}.tag{color:var(--muted);font-size:15px}
+  .chip{display:inline-flex;gap:8px;background:var(--chip);border:1px solid var(--line);padding:6px 10px;border-radius:10px;margin:4px 6px 0 0;color:inherit;text-decoration:none}
+  .h{color:var(--brand);text-transform:uppercase;letter-spacing:.06em;font-size:14px;margin:20px 0 8px}
+  .card{border:1px solid var(--line);border-radius:12px;padding:14px}
+  .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:20px} @media(max-width:860px){.grid{grid-template-columns:1fr}}
+  .pill{display:inline-block;background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:4px 8px;margin:4px 6px 0 0;font-size:13px}
+  footer{margin:22px 0 40px;color:var(--muted);text-align:center;font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="id">
+      <div class="avatar" aria-hidden="true"></div>
+      <div>
+        <h1>Guilherme Tiago</h1>
+        <div class="tag">Full Stack Software Engineer — React • Node.js • Python • Cloud & Automation</div>
+      </div>
+    </div>
+    <div>
+      <a class="chip" href="mailto:guiotiago@gmail.com">📧 guiotiago@gmail.com</a>
+      <a class="chip" href="https://github.com/onigui" target="_blank">💻 GitHub</a>
+      <a class="chip" href="https://www.linkedin.com/in/guilherme-tiago" target="_blank">💼 LinkedIn</a>
+      <a class="chip" href="/">🏠 Home</a>
+    </div>
+  </header>
+
+  <main class="grid">
+    <section>
+      <div class="h">Professional Summary</div>
+      <div class="card">
+        Full Stack Software Engineer focused on building reliable, maintainable and scalable software.
+        Strong experience across React/Next.js, Node.js/Express, Python/FastAPI, automation (PDF/Excel),
+        databases (PostgreSQL/Mongo/Prisma) and CI/CD.
+      </div>
+
+      <div class="h">Experience</div>
+      <div class="card">
+        <strong>Independent Software Engineer</strong> — 2022–Present · Remote
+        <ul>
+          <li>Built automation platforms and full-stack apps (auth, APIs, dashboards, backups, PDF/Excel generation).</li>
+          <li>Delivered admin panels with React + TypeScript and REST backends (Node/FastAPI).</li>
+        </ul>
+      </div>
+
+      <div class="h">Projects</div>
+      <div class="card">
+        <p><strong>Liga do Bem — Full Platform (Monorepo)</strong> · Web (Next.js/TS) • Mobile (React Native/Expo) • API (Node/Express + Prisma/PostgreSQL)</p>
+        <p><a href="https://github.com/onigui/nova-versao-liga-do-bem" target="_blank">Repository →</a></p>
+        <hr>
+        <p><strong>FAMESP — Credentialing System</strong> · FastAPI backend • automation (backups, PDF/Excel), documented API</p>
+        <p><a href="https://github.com/onigui/famesp" target="_blank">Repository →</a></p>
+      </div>
+    </section>
+
+    <aside>
+      <div class="h">Core Skills</div>
+      <div class="card">
+        <span class="pill">React</span><span class="pill">Next.js</span><span class="pill">TypeScript</span>
+        <span class="pill">Node.js</span><span class="pill">Express</span><span class="pill">Python</span>
+        <span class="pill">FastAPI</span><span class="pill">PostgreSQL</span><span class="pill">Prisma</span>
+        <span class="pill">Docker</span><span class="pill">CI/CD</span><span class="pill">Playwright/Cypress</span>
+      </div>
+
+      <div class="h">Education</div>
+      <div class="card">
+        B.Sc. Software Engineering (in progress) — Centro Universitário Anhanguera Pitágoras Ampli
+      </div>
+    </aside>
+  </main>
+
+  <footer>Print as PDF: Ctrl/Cmd + P</footer>
+</div>
+</body>
+</html>
