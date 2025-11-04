@@ -127,34 +127,13 @@ footer{margin:22px 0 40px;color:var(--muted);text-align:center;font-size:13px}
     </aside>
   </section>
 
-  <section class="projects">
-    <div class="h" data-en="Projects" data-pt="Projetos">Projects</div>
-    <div class="row">
+  
+    <section class="projects">
+  <div class="h" data-en="Projects" data-pt="Projetos">Projects</div>
+  <div id="projects-row" class="row"></div>
+</section>
 
-      <div class="proj">
-        <h3>Liga do Bem — Full Platform (Monorepo)</h3>
-        <div class="muted">Mobile (React Native/Expo) • Web (Next.js/TS) • API (Node/Express + Prisma/PostgreSQL) • Push (Firebase FCM) • Deploy (Render)</div>
-        <ul>
-          <li>Multi-app: public site + admin portal + upcoming B2B partner app.</li>
-          <li>Auth (JWT/OAuth), CRUD, uploads, notifications, analytics; payments-ready endpoints.</li>
-          <li>Local DX: dockerized DB, Prisma migrations/seed; ready for CI (lint/build/test) and E2E (Playwright/Detox).</li>
-        </ul>
-        <p><a href="https://github.com/onigui/nova-versao-liga-do-bem" target="_blank" rel="noopener">Repository →</a></p>
-      </div>
 
-      <div class="proj">
-        <h3>FAMESP — Credentialing System (Automation-heavy)</h3>
-        <div class="muted">FastAPI backend • Dedicated front-end • Automation: backups, PDF/Excel generation, deploy checks (Render)</div>
-        <ul>
-          <li>JWT/refresh auth, documented API (Swagger/ReDoc), operational scripts for reliability.</li>
-          <li>PDF/Excel generation and DB backup workflows reduce manual effort and errors.</li>
-          <li>Suggested CI: Pytest + Playwright smoke; artifacts with sample PDFs for review.</li>
-        </ul>
-        <p><a href="https://github.com/onigui/famesp" target="_blank" rel="noopener">Repository →</a></p>
-      </div>
-
-    </div>
-  </section>
 
   <footer>
     <div>📧 <a href="mailto:guiotiago@gmail.com">guiotiago@gmail.com</a></div>
